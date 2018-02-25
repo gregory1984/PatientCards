@@ -1,0 +1,400 @@
+﻿<UserControl
+    x:Class="Patient_Cards.Views.Main.PersonalData"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    FontFamily="Segoe UI">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <!--
+        Personal data
+    -->
+    <GroupBox Padding="0">
+        <GroupBox.Header>
+            <Label
+                VerticalAlignment="Center"
+                Content="DANE PERSONALNE"
+                FontFamily="SegoeUI"
+                Foreground="White" />
+        </GroupBox.Header>
+        <StackPanel>
+            <DockPanel HorizontalAlignment="Stretch" Background="AntiqueWhite">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label
+                        Margin="2"
+                        VerticalAlignment="Center"
+                        Content="Data:"
+                        FontFamily="SegoeUI" />
+                    <DatePicker
+                        Margin="2"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Controls:TextBoxHelper.Watermark="Wybierz datę"
+                        FontFamily="SegoeUI"
+                        SelectedDate="{Binding CurrentVisitDate, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <!--
+                    Name
+                -->
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Imię:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Surname
+                -->
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Nazwisko:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Age
+                -->
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Wiek:"
+                    FontFamily="SegoeUI" />
+                <Controls:NumericUpDown
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    Value="{Binding Age, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Visit purpose
+                -->
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Powód wizyty:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding VisitCause, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Previous date
+                -->
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Data poprzedniej wizyty:"
+                    FontFamily="SegoeUI" />
+                <DatePicker
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.Watermark="Wybierz datę"
+                    FontFamily="SegoeUI"
+                    SelectedDate="{Binding PreviousVisitDate, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Profession or Hobby
+                -->
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Zawód/hobby:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding ProfessionOrHobby, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Distances
+                -->
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="4"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Odległości:"
+                    FontFamily="SegoeUI" />
+                <ComboBox
+                    Grid.Row="2"
+                    Grid.Column="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontFamily="SegoeUI"
+                    ItemsSource="{Binding Distances, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding SelectedDistance, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Computer profession
+                -->
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Praca przy komputerze:"
+                    FontFamily="SegoeUI" />
+                <DockPanel
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    LastChildFill="True">
+                    <CheckBox
+                        Margin="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding IsComputerProfession, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Controls:TextBoxHelper.ClearTextButton="True"
+                        Controls:TextBoxHelper.SelectAllOnFocus="True"
+                        FontFamily="SegoeUI"
+                        MaxLength="1000"
+                        Text="{Binding ComputerProfessionOptional, UpdateSourceTrigger=PropertyChanged}" />
+                </DockPanel>
+                <!--
+                    Car driving
+                -->
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Prowadzenie samochodu:"
+                    FontFamily="SegoeUI" />
+                <DockPanel
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    LastChildFill="True">
+                    <CheckBox
+                        Margin="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding IsCarDriving, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Controls:TextBoxHelper.ClearTextButton="True"
+                        Controls:TextBoxHelper.SelectAllOnFocus="True"
+                        FontFamily="SegoeUI"
+                        MaxLength="1000"
+                        Text="{Binding CarDrivingOptional, UpdateSourceTrigger=PropertyChanged}" />
+                </DockPanel>
+                <!--
+                    CL profession conditions
+                -->
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="CL - praca:"
+                    FontFamily="SegoeUI" />
+                <DockPanel
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    LastChildFill="True">
+                    <ComboBox
+                        Margin="2"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontFamily="SegoeUI"
+                        ItemsSource="{Binding CLProfessionConditions, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding SelectedCLProfessionCondition, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox
+                        Margin="2"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Controls:TextBoxHelper.ClearTextButton="True"
+                        Controls:TextBoxHelper.SelectAllOnFocus="True"
+                        FontFamily="SegoeUI"
+                        MaxLength="1000"
+                        Text="{Binding CLProfessionContitionsOptional, UpdateSourceTrigger=PropertyChanged}" />
+                </DockPanel>
+                <!--
+                    Treatments
+                -->
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Operacje/zabiegi:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding Treatments, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Current GL type
+                -->
+                <Label
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Rodzaj dot. okularów:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding CurrentGLType, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Comments
+                -->
+                <Label
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Uwagi:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding Comments, UpdateSourceTrigger=PropertyChanged}" />
+                <!--
+                    Control date
+                -->
+                <Label
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Data wizyty kontrolnej:"
+                    FontFamily="SegoeUI" />
+                <TextBox
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="5"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="SegoeUI"
+                    MaxLength="1000"
+                    Text="{Binding ControlVisitDate, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </StackPanel>
+
+    </GroupBox>
+</UserControl>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patient Cards", "Patient Cards\Patient Cards.csproj", "{46E84CE2-9777-4DA3-ADF2-88159180B4D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D6E6E5C-A85D-48B3-ACEB-926C64988457} = {4D6E6E5C-A85D-48B3-ACEB-926C64988457}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patient Cards Model", "Patient Cards Model\Patient Cards Model.csproj", "{4D6E6E5C-A85D-48B3-ACEB-926C64988457}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46E84CE2-9777-4DA3-ADF2-88159180B4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E84CE2-9777-4DA3-ADF2-88159180B4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E84CE2-9777-4DA3-ADF2-88159180B4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E84CE2-9777-4DA3-ADF2-88159180B4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6E6E5C-A85D-48B3-ACEB-926C64988457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6E6E5C-A85D-48B3-ACEB-926C64988457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6E6E5C-A85D-48B3-ACEB-926C64988457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6E6E5C-A85D-48B3-ACEB-926C64988457}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {158D6C7E-8F6A-4220-8FC0-3BA6BE3EEDAD}
+	EndGlobalSection
+EndGlobal

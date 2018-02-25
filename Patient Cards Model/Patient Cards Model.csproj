@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D6E6E5C-A85D-48B3-ACEB-926C64988457}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Patient_Cards_Model</RootNamespace>
+    <AssemblyName>Patient Cards Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\Hibernate.cs" />
+    <Compile Include="DTO\BaseDTO.cs" />
+    <Compile Include="DTO\CLCurrentCorrectionDTO.cs" />
+    <Compile Include="DTO\CLFrontEyeSectionRateDTO.cs" />
+    <Compile Include="DTO\CLMatchedCorrectionDTO.cs" />
+    <Compile Include="DTO\CLMatchedCorrectionRateDTO.cs" />
+    <Compile Include="DTO\CLProfessionConditionDTO.cs" />
+    <Compile Include="DTO\CLSharpnessDTO.cs" />
+    <Compile Include="DTO\CLWearingTypeDTO.cs" />
+    <Compile Include="DTO\ComplaintDTO.cs" />
+    <Compile Include="DTO\DistanceDTO.cs" />
+    <Compile Include="DTO\GLCurrentCorrectionDTO.cs" />
+    <Compile Include="DTO\GLFinalyMatchedCorrectionTypeDTO.cs" />
+    <Compile Include="DTO\GLMatchedCorrectionDTO.cs" />
+    <Compile Include="DTO\GLSharpnessDTO.cs" />
+    <Compile Include="DTO\IllnessDTO.cs" />
+    <Compile Include="DTO\MedicamentDTO.cs" />
+    <Compile Include="DTO\OtherDTO.cs" />
+    <Compile Include="DTO\UserPreferencesDTO.cs" />
+    <Compile Include="Entities\Base.cs" />
+    <Compile Include="Entities\CL\CLCurrentCorrection.cs" />
+    <Compile Include="Entities\CL\CLPrimaryData.cs" />
+    <Compile Include="Entities\CL\CLFrontEyeSectionRateIssue.cs" />
+    <Compile Include="Entities\CL\CLFrontEyeSectionRate.cs" />
+    <Compile Include="Entities\CL\CLMatchedCorrectionRate.cs" />
+    <Compile Include="Entities\CL\CLMatchedCorrectionRateIssue.cs" />
+    <Compile Include="Entities\CL\CLProfessionCondition.cs" />
+    <Compile Include="Entities\CL\CLSharpness.cs" />
+    <Compile Include="Entities\Complaint.cs" />
+    <Compile Include="Entities\Distance.cs" />
+    <Compile Include="Entities\Eye.cs" />
+    <Compile Include="Entities\GL\GLCurrentCorrection.cs" />
+    <Compile Include="Entities\GL\GLFinallyMatchedCorrectionType.cs" />
+    <Compile Include="Entities\GL\GLSharpness.cs" />
+    <Compile Include="Entities\Illness.cs" />
+    <Compile Include="Entities\CL\CLMatchedCorrection.cs" />
+    <Compile Include="Entities\CL\CLMatchedCorrectionType.cs" />
+    <Compile Include="Entities\GL\GLMatchedCorrection.cs" />
+    <Compile Include="Entities\GL\GLMatchedCorrectionType.cs" />
+    <Compile Include="Entities\Initialization.cs" />
+    <Compile Include="Entities\Medicament.cs" />
+    <Compile Include="Entities\Other.cs" />
+    <Compile Include="Entities\Patient.cs" />
+    <Compile Include="Entities\Card.cs" />
+    <Compile Include="Entities\CL\CLWearingType.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Interfaces\IDatabaseService.cs" />
+    <Compile Include="Interfaces\IDictionariesService.cs" />
+    <Compile Include="Interfaces\IDocumentsService.cs" />
+    <Compile Include="Interfaces\ICorrectionService.cs" />
+    <Compile Include="Interfaces\IPreferencesService.cs" />
+    <Compile Include="Interfaces\IRatesService.cs" />
+    <Compile Include="Interfaces\ISharpnessService.cs" />
+    <Compile Include="Mappings\BaseMap.cs" />
+    <Compile Include="Mappings\CardMap.cs" />
+    <Compile Include="Mappings\CL\CLCurrentCorrectionMap.cs" />
+    <Compile Include="Mappings\CL\CLFrontEyeSectionRateIssueMap.cs" />
+    <Compile Include="Mappings\CL\CLFrontEyeSectionRateMap.cs" />
+    <Compile Include="Mappings\CL\CLMatchedCorrectionMap.cs" />
+    <Compile Include="Mappings\CL\CLMatchedCorrectionRateIssueMap.cs" />
+    <Compile Include="Mappings\CL\CLMatchedCorrectionTypeMap.cs" />
+    <Compile Include="Mappings\CL\CLMatchedCorrectionRateMap.cs" />
+    <Compile Include="Mappings\CL\CLPrimaryDataMap.cs" />
+    <Compile Include="Mappings\CL\CLProfessionConditionMap.cs" />
+    <Compile Include="Mappings\CL\CLSharpnessMap.cs" />
+    <Compile Include="Mappings\CL\CLWearingTypeMap.cs" />
+    <Compile Include="Mappings\ComplaintMap.cs" />
+    <Compile Include="Mappings\DistanceMap.cs" />
+    <Compile Include="Mappings\EyeMap.cs" />
+    <Compile Include="Mappings\GL\GLCurrentCorrectionMap.cs" />
+    <Compile Include="Mappings\GL\GLFinalyMatchedCorrectionTypeMap.cs" />
+    <Compile Include="Mappings\GL\GLMatchedCorrectionMap.cs" />
+    <Compile Include="Mappings\GL\GLMatchedCorrectionTypeMap.cs" />
+    <Compile Include="Mappings\GL\GLSharpnessMap.cs" />
+    <Compile Include="Mappings\IllnessMap.cs" />
+    <Compile Include="Mappings\InitializationMap.cs" />
+    <Compile Include="Mappings\MedicamentMap.cs" />
+    <Compile Include="Mappings\OtherMap.cs" />
+    <Compile Include="Mappings\PatientMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DatabaseService.cs" />
+    <Compile Include="Services\DictionariesService.cs" />
+    <Compile Include="Services\DocumentsService.cs" />
+    <Compile Include="Services\CorrectionService.cs" />
+    <Compile Include="Services\PreferencesService.cs" />
+    <Compile Include="Services\RatesService.cs" />
+    <Compile Include="Services\SharpnessService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Searching\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

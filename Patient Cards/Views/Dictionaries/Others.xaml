@@ -1,0 +1,100 @@
+﻿<UserControl
+    x:Class="Patient_Cards.Views.Dictionaries.Others"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    FontFamily="Segoe UI">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <!--
+        Others
+    -->
+    <GroupBox Padding="0">
+        <GroupBox.Header>
+            <Label
+                VerticalAlignment="Center"
+                Content="INNE"
+                FontFamily="SegoeUI"
+                Foreground="White" />
+        </GroupBox.Header>
+        <StackPanel>
+            <Grid Background="AntiqueWhite">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="Uwagi:"
+                    FontFamily="Segoe UI" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="2"
+                    MaxLength="1000"
+                    VerticalAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="Segoe UI"
+                    Text="{Binding OthersOptional, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+            <DataGrid
+                AlternatingRowBackground="White"
+                AutoGenerateColumns="False"
+                HorizontalScrollBarVisibility="Disabled"
+                ItemsSource="{Binding Others, UpdateSourceTrigger=PropertyChanged}"
+                RowBackground="White"
+                ScrollViewer.CanContentScroll="False"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                SelectedItem="{Binding SelectedOther, UpdateSourceTrigger=PropertyChanged}"
+                SelectionMode="Single">
+                <DataGrid.Columns>
+                    <!--
+                        IsChecked
+                    -->
+                    <DataGridTemplateColumn Width="auto" SortMemberPath="IsChecked">
+                        <DataGridTemplateColumn.Header>
+                            <icon:Material Kind="CheckCircleOutline" />
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox
+                                    Margin="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        Name
+                    -->
+                    <DataGridTemplateColumn
+                        Width="*"
+                        Header="Nazwa"
+                        SortMemberPath="Name">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label
+                                    Margin="2"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+    </GroupBox>
+</UserControl>

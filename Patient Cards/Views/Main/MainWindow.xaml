@@ -1,0 +1,69 @@
+﻿<Controls:MetroWindow
+    x:Class="Patient_Cards.Views.Main.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:cl="clr-namespace:Patient_Cards.Views.Corrections.CL"
+    xmlns:gl="clr-namespace:Patient_Cards.Views.Corrections.GL"
+    xmlns:dict="clr-namespace:Patient_Cards.Views.Dictionaries"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:main="clr-namespace:Patient_Cards.Views.Main"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:rate="clr-namespace:Patient_Cards.Views.Rates"
+    xmlns:shar="clr-namespace:Patient_Cards.Views.Sharpness"
+    Title="Karty pacjentów"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    FontFamily="Segoe UI"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0" Grid.Column="1">
+            <StackPanel>
+                <main:PersonalData />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <dict:Complaints Grid.Column="0" />
+                    <dict:Illnesses Grid.Column="1" />
+                    <dict:Medicaments Grid.Column="2" />
+                    <dict:Others Grid.Column="3" />
+                </Grid>
+
+                <cl:CLCurrentCorrection />
+                <cl:CLMatchedCorrection />
+                <gl:GLCurrentCorrection />
+                <gl:GLMatchedCorrection />
+
+                <rate:CLFrontEyeSectionRate />
+                <rate:CLMatchedCorrectionRate />
+
+                <shar:CLSharpness />
+                <shar:GLSharpness />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Controls:MetroWindow>

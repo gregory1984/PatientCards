@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{46E84CE2-9777-4DA3-ADF2-88159180B4D2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Patient_Cards</RootNamespace>
+    <AssemblyName>Patient Cards</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Patient Cards Model">
+      <HintPath>..\Patient Cards Model\bin\Debug\Patient Cards Model.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ViewModels\Dictionaries\ComplaintsViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionEyeViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\GL\GLCurrentCorrectionEyeViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\GL\GLCurrentCorrectionViewModel.cs" />
+    <Compile Include="ViewModels\Dictionaries\DictionaryViewModel.cs" />
+    <Compile Include="ViewModels\Dictionaries\MedicamentsViewModel.cs" />
+    <Compile Include="ViewModels\Dictionaries\OthersViewModel.cs" />
+    <Compile Include="ViewModels\Dictionaries\IllnessesViewModel.cs" />
+    <Compile Include="ViewModels\Main\PersonalDataViewModel.cs" />
+    <Compile Include="ViewModels\Rates\CLMatchedCorrectionRateIssueViewModel.cs" />
+    <Compile Include="ViewModels\Rates\CLMatchedCorrectionRateViewModel.cs" />
+    <Compile Include="ViewModels\Rates\CLFrontEyeSectionRateIssueViewModel.cs" />
+    <Compile Include="ViewModels\Rates\CLFrontEyeSectionRateViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\CL\CLMatchedCorrectionEyeViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\CL\CLMatchedCorrectionViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\GL\GLMatchedCorrectionEyeViewModel.cs" />
+    <Compile Include="ViewModels\Corrections\GL\GLMatchedCorrectionViewModel.cs" />
+    <Compile Include="ViewModels\Sharpness\CLSharpnessEyeViewModel.cs" />
+    <Compile Include="ViewModels\Sharpness\CLSharpnessViewModel.cs" />
+    <Compile Include="ViewModels\Sharpness\GLSharpnessViewModel.cs" />
+    <Compile Include="ViewModels\Sharpness\GLSharpnessEyeViewModel.cs" />
+    <Compile Include="Views\Corrections\CL\CLCurrentCorrection.xaml.cs">
+      <DependentUpon>CLCurrentCorrection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Corrections\CL\CLMatchedCorrection.xaml.cs">
+      <DependentUpon>CLMatchedCorrection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Corrections\GL\GLCurrentCorrection.xaml.cs">
+      <DependentUpon>GLCurrentCorrection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Corrections\GL\GLMatchedCorrection.xaml.cs">
+      <DependentUpon>GLMatchedCorrection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionaries\Complaints.xaml.cs">
+      <DependentUpon>Complaints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionaries\Illnesses.xaml.cs">
+      <DependentUpon>Illnesses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionaries\Medicaments.xaml.cs">
+      <DependentUpon>Medicaments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dictionaries\Others.xaml.cs">
+      <DependentUpon>Others.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\PersonalData.xaml.cs">
+      <DependentUpon>PersonalData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rates\CLFrontEyeSectionRate.xaml.cs">
+      <DependentUpon>CLFrontEyeSectionRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rates\CLMatchedCorrectionRate.xaml.cs">
+      <DependentUpon>CLMatchedCorrectionRate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sharpness\CLSharpness.xaml.cs">
+      <DependentUpon>CLSharpness.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sharpness\GLSharpness.xaml.cs">
+      <DependentUpon>GLSharpness.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Corrections\CL\CLCurrentCorrection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Corrections\CL\CLMatchedCorrection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Corrections\GL\GLCurrentCorrection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Corrections\GL\GLMatchedCorrection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionaries\Complaints.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionaries\Illnesses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionaries\Medicaments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dictionaries\Others.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Main\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Converters\MultipassConverter.cs" />
+    <Compile Include="Events\ExceptionOccuredEvent.cs" />
+    <Compile Include="Events\Pagination\JumpToPageEvent.cs" />
+    <Compile Include="Events\Payloads\JumpToPagePayload.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\MessageBoxes.cs" />
+    <Compile Include="Helpers\UnityNames.cs" />
+    <Compile Include="Helpers\VersionData.cs" />
+    <Compile Include="Images\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Main\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Pagination\PaginationViewModel.cs" />
+    <Compile Include="Views\Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Main\PersonalData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rates\CLFrontEyeSectionRate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rates\CLMatchedCorrectionRate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sharpness\CLSharpness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sharpness\GLSharpness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Images\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="MahApps.Metro.IconPacks">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity" Version="6.3.0" />
+    <PackageReference Include="System.Data.SQLite.Core">
+      <Version>1.0.107</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Exec\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
