@@ -10,7 +10,7 @@ using Patient_Cards.Helpers;
 using Patient_Cards.ViewModels.Base;
 using Patient_Cards.ViewModels.Corrections;
 using Patient_Cards_Model.Interfaces;
-using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.CL;
 
 namespace Patient_Cards.ViewModels.Corrections.CL
 {

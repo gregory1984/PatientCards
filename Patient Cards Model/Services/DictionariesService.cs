@@ -13,6 +13,8 @@ using Patient_Cards_Model.Entities.GL;
 using Patient_Cards_Model.Entities.CL;
 using Patient_Cards_Model.Database;
 using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.CL;
+using Patient_Cards_Model.DTO.GL;
 using Patient_Cards_Model.Interfaces;
 using Pro = NHibernate.Criterion.Projections;
 using Res = NHibernate.Criterion.Restrictions;

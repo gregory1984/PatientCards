@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.CL;
 using Patient_Cards_Model.Interfaces;
 
 namespace Patient_Cards.ViewModels.Corrections.CL

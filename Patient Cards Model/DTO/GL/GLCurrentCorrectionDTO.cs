@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Patient_Cards_Model.DTO
+namespace Patient_Cards_Model.DTO.GL
 {
     public class GLCurrentCorrectionDTO
     {

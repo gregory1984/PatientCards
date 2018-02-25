@@ -3,7 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.CL;
 
 namespace Patient_Cards.ViewModels.Corrections.CL
 {

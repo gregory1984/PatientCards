@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.CL;
 
 namespace Patient_Cards.ViewModels.Rates
 {

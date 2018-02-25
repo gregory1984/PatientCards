@@ -14,6 +14,7 @@ using Patient_Cards_Model.Entities.CL;
 using Patient_Cards_Model.Database;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.CL;
 using Pro = NHibernate.Criterion.Projections;
 using Res = NHibernate.Criterion.Restrictions;
 using SqlType = NHibernate.NHibernateUtil;

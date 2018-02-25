@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Patient_Cards_Model.DTO;
+using Patient_Cards_Model.DTO.GL;
 using Patient_Cards_Model.Interfaces;
 
 namespace Patient_Cards.ViewModels.Corrections.GL
