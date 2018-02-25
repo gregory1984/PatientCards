@@ -55,11 +55,11 @@ namespace Patient_Cards.ViewModels.Dictionaries
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() => SetComplaints());
+                eventAggregator.ExecuteSafety(() => GetComplaints());
             }));
         }
 
-        private void SetComplaints()
+        private void GetComplaints()
         {
             Illnesses = new ObservableCollection<DictionaryViewModel>();
             foreach (IllnessDTO i in dictionariesService.Illnesses.Values)

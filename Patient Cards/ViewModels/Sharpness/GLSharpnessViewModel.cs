@@ -33,7 +33,7 @@ namespace Patient_Cards.ViewModels.Sharpness
 
         private readonly ISharpnessService sharpnessService;
 
-        public GLSharpnessViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, 
+        public GLSharpnessViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer,
                                     ISharpnessService sharpnessService, IDictionariesService dictionariesService)
             : base(eventAggregator, unityContainer, dictionariesService)
         {
@@ -47,12 +47,12 @@ namespace Patient_Cards.ViewModels.Sharpness
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    SetSharpnesses();
+                    GetSharpnesses();
                 });
             }));
         }
 
-        private void SetSharpnesses()
+        private void GetSharpnesses()
         {
             Sharpnesses = new ObservableCollection<GLSharpnessEyeViewModel>();
             SelectedSharpness = null;

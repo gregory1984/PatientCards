@@ -95,6 +95,14 @@ namespace Patient_Cards_Model.Services
             }
         }
 
+        public IList<CLPrimaryDataDTO> GetCLPrimaryDatas(int cardId)
+        {
+            using (var session = Hibernate.SessionFactory.OpenSession())
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public IList<GLCurrentCorrectionDTO> GetGLCurrentCorrections(int? cardId = null)
         {
             using (var session = Hibernate.SessionFactory.OpenSession())

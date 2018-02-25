@@ -171,13 +171,13 @@ namespace Patient_Cards.ViewModels.Main
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    SetDistances();
-                    SetCLProfessionConditions();
+                    GetDistances();
+                    GetCLProfessionConditions();
                 });
             }));
         }
 
-        private void SetDistances()
+        private void GetDistances()
         {
             Distances = new ObservableCollection<DistanceDTO> { new DistanceDTO { Id = null, Name = "-- Wybierz --" } };
             foreach (DistanceDTO d in dictionariesService.Distances.Values)
@@ -187,7 +187,7 @@ namespace Patient_Cards.ViewModels.Main
             SelectedDistance = Distances.First();
         }
 
-        private void SetCLProfessionConditions()
+        private void GetCLProfessionConditions()
         {
             CLProfessionConditions = new ObservableCollection<CLProfessionConditionDTO> { new CLProfessionConditionDTO { Id = null, Name = "-- Wybierz --" } };
             foreach (CLProfessionConditionDTO d in dictionariesService.CLProfessionConditions.Values)

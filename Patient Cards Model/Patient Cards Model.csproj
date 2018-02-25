@@ -68,6 +68,7 @@
     <Compile Include="DTO\CLFrontEyeSectionRateDTO.cs" />
     <Compile Include="DTO\CLMatchedCorrectionDTO.cs" />
     <Compile Include="DTO\CLMatchedCorrectionRateDTO.cs" />
+    <Compile Include="DTO\CLPrimaryDataDTO.cs" />
     <Compile Include="DTO\CLProfessionConditionDTO.cs" />
     <Compile Include="DTO\CLSharpnessDTO.cs" />
     <Compile Include="DTO\CLWearingTypeDTO.cs" />

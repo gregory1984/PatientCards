@@ -54,12 +54,12 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    SetCorrections();
+                    GetCorrections();
                 });
             }));
         }
 
-        private void SetCorrections()
+        private void GetCorrections()
         {
             Corrections = new ObservableCollection<GLCurrentCorrectionEyeViewModel>();
             foreach (GLCurrentCorrectionDTO c in correctionService.GetGLCurrentCorrections())

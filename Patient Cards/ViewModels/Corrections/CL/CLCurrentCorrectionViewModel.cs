@@ -61,12 +61,12 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    SetCorrections();
+                    GetCorrections();
                 });
             }));
         }
 
-        private void SetCorrections()
+        private void GetCorrections()
         {
             Corrections = new ObservableCollection<CLCurrentCorrectionEyeViewModel>();
             foreach (CLCurrentCorrectionDTO c in correctionService.GetCLCurrentCorrections())

@@ -29,6 +29,7 @@ namespace Patient_Cards_Model.Interfaces
     {
         IList<GLMatchedCorrectionDTO> GetGLMatchedCorrections(GLCorrectionType gLCorrectionType, int? cardId = null);
         IList<CLMatchedCorrectionDTO> GetCLMatchedCorrections(CLCorrectionType cLCorrectionType, int? cardId = null);
+        IList<CLPrimaryDataDTO> GetCLPrimaryDatas(int cardId);
         IList<GLCurrentCorrectionDTO> GetGLCurrentCorrections(int? cardId = null);
         IList<CLCurrentCorrectionDTO> GetCLCurrentCorrections(int? cardId = null);
         string GetCurrentCorrectionFromWhen(VisionType visionType, int cardId);
