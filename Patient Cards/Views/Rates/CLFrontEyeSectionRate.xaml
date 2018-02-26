@@ -37,8 +37,7 @@
                 -->
                 <DataGridTemplateColumn
                     Width="auto"
-                    Header="Przypadek"
-                    SortMemberPath="IssueName">
+                    Header="Przypadek">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Label
@@ -54,8 +53,7 @@
                 -->
                 <DataGridTemplateColumn
                     Width="*"
-                    Header="Obecna wizyta"
-                    SortMemberPath="CurrentVisitRate">
+                    Header="Obecna wizyta">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
@@ -63,7 +61,6 @@
                                 MaxLength="1000"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
-                                Controls:TextBoxHelper.ClearTextButton="True"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="GhostWhite"
                                 Text="{Binding CurrentVisitRate, UpdateSourceTrigger=PropertyChanged}" />
@@ -75,8 +72,7 @@
                 -->
                 <DataGridTemplateColumn
                     Width="*"
-                    Header="Wizyta kontrolna"
-                    SortMemberPath="ControlVisitRate">
+                    Header="Wizyta kontrolna">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
@@ -84,7 +80,6 @@
                                 VerticalAlignment="Center"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
-                                Controls:TextBoxHelper.ClearTextButton="True"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="GhostWhite"
                                 Text="{Binding ControlVisitRate, UpdateSourceTrigger=PropertyChanged}" />

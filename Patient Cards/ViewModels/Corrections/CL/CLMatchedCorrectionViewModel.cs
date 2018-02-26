@@ -133,15 +133,15 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    GetCorrections(CLCorrectionType.ForTesting);
-                    GetCorrections(CLCorrectionType.ForTrading);
+                    SetCorrections(CLCorrectionType.ForTesting);
+                    SetCorrections(CLCorrectionType.ForTrading);
 
-                    GetWearingTypes();
+                    SetWearingTypes();
                 });
             }));
         }
 
-        private void GetCorrections(CLCorrectionType cLCorrectionType)
+        private void SetCorrections(CLCorrectionType cLCorrectionType)
         {
             IList<CLMatchedCorrectionEyeViewModel> corrections = null;
             CLMatchedCorrectionEyeViewModel selectedCorrection = null;
@@ -160,7 +160,7 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             }
         }
 
-        private void GetWearingTypes()
+        private void SetWearingTypes()
         {
             ForTestingWearingTypes = new ObservableCollection<CLWearingTypeDTO>();
             ForTestingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "-- Wybierz --" });

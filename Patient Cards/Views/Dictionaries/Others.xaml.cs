@@ -13,5 +13,10 @@ namespace Patient_Cards.Views.Dictionaries
 
             Unloaded += (sender, e) => viewmodel.UnsubscribePrismEvents();
         }
+
+        private void OthersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            (sender as ListBox).SelectedIndex = -1;
+        }
     }
 }

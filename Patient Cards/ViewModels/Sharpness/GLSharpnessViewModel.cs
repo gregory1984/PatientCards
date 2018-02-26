@@ -47,12 +47,12 @@ namespace Patient_Cards.ViewModels.Sharpness
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    GetSharpnesses();
+                    SetSharpnesses();
                 });
             }));
         }
 
-        private void GetSharpnesses()
+        private void SetSharpnesses()
         {
             Sharpnesses = new ObservableCollection<GLSharpnessEyeViewModel>();
             SelectedSharpness = null;

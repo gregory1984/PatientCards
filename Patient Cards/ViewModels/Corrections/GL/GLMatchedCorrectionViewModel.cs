@@ -82,14 +82,14 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    GetCorrections(GLCorrectionType.FromPhoropter);
-                    GetCorrections(GLCorrectionType.FinallyMatched);
-                    GetFinallyCorrectionTypes();
+                    SetCorrections(GLCorrectionType.FromPhoropter);
+                    SetCorrections(GLCorrectionType.FinallyMatched);
+                    SetFinallyCorrectionTypes();
                 });
             }));
         }
 
-        private void GetCorrections(GLCorrectionType gLCorrectionType)
+        private void SetCorrections(GLCorrectionType gLCorrectionType)
         {
             IList<GLMatchedCorrectionEyeViewModel> corrections = null;
             GLMatchedCorrectionEyeViewModel selectedCorrection = null;
@@ -108,7 +108,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             }
         }
 
-        private void GetFinallyCorrectionTypes()
+        private void SetFinallyCorrectionTypes()
         {
             FinallyCorrectionTypes = new ObservableCollection<GLFinallyMatchedCorrectionTypeDTO>();
             FinallyCorrectionTypes.Add(new GLFinallyMatchedCorrectionTypeDTO { Id = null, Name = "-- Wybierz --" });

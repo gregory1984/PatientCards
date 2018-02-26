@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:cl="clr-namespace:Patient_Cards.Views.Corrections.CL"
-    xmlns:gl="clr-namespace:Patient_Cards.Views.Corrections.GL"
     xmlns:dict="clr-namespace:Patient_Cards.Views.Dictionaries"
+    xmlns:gl="clr-namespace:Patient_Cards.Views.Corrections.GL"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:main="clr-namespace:Patient_Cards.Views.Main"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -28,14 +28,56 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="0" Grid.Column="1">
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <main:PersonalData />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <dict:Illnesses Grid.Row="0" />
+                <dict:Others Grid.Row="1" />
+                <dict:Medicaments Grid.Row="2" />
+                <dict:Complaints Grid.Row="3" />
+            </Grid>
+        </StackPanel>
+        <TabControl Grid.Row="0" Grid.Column="1">
+            <TabItem Header="Okulary">
+                <StackPanel>
+                    <gl:GLCurrentCorrection />
+                    <cl:CLCurrentCorrection />
+                    <shar:GLSharpness />
+                    <gl:GLMatchedCorrection />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Soczewki">
+                <ScrollViewer>
+                    <StackPanel>
+                        <rate:CLFrontEyeSectionRate />
+                        <shar:CLSharpness />
+                        <cl:CLMatchedCorrection />
+                        <rate:CLMatchedCorrectionRate />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+
+        <!--<ScrollViewer Grid.Row="0" Grid.Column="1">
             <StackPanel>
                 <main:PersonalData />
+
+
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -64,6 +106,6 @@
                 <shar:CLSharpness />
                 <shar:GLSharpness />
             </StackPanel>
-        </ScrollViewer>
+        </ScrollViewer>-->
     </Grid>
 </Controls:MetroWindow>

@@ -37,8 +37,7 @@
                 -->
                 <DataGridTemplateColumn
                     Width="auto"
-                    Header="VISUS"
-                    SortMemberPath="EyeName">
+                    Header="VISUS">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Label
@@ -54,15 +53,13 @@
                 -->
                 <DataGridTemplateColumn
                     Width="*"
-                    Header="Dotychczasowa korekcja"
-                    SortMemberPath="CurrentCorrection">
+                    Header="Dotychczasowa korekcja">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
-                                Controls:TextBoxHelper.ClearTextButton="True"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="GhostWhite"
                                 Text="{Binding CurrentCorrection, UpdateSourceTrigger=PropertyChanged}" />
@@ -74,15 +71,13 @@
                 -->
                 <DataGridTemplateColumn
                     Width="*"
-                    Header="SC (bez korekcji)"
-                    SortMemberPath="SC">
+                    Header="SC (bez korekcji)">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
-                                Controls:TextBoxHelper.ClearTextButton="True"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="GhostWhite"
                                 Text="{Binding SC, UpdateSourceTrigger=PropertyChanged}" />
@@ -94,15 +89,13 @@
                 -->
                 <DataGridTemplateColumn
                     Width="*"
-                    Header="CC (obecna korekcja)"
-                    SortMemberPath="CC">
+                    Header="CC (obecna korekcja)">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
-                                Controls:TextBoxHelper.ClearTextButton="True"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="GhostWhite"
                                 Text="{Binding CC, UpdateSourceTrigger=PropertyChanged}" />

@@ -48,12 +48,12 @@ namespace Patient_Cards.ViewModels.Rates
             {
                 eventAggregator.ExecuteSafety(() =>
                 {
-                    GetRates();
+                    SetRates();
                 });
             }));
         }
 
-        private void GetRates()
+        private void SetRates()
         {
             Issues = new ObservableCollection<CLFrontEyeSectionRateIssueViewModel>();
             foreach (CLFrontEyeSectionRateDTO r in ratesService.GetCLFrontEyeSectionRates())

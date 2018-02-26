@@ -25,7 +25,7 @@
                 Foreground="White" />
         </GroupBox.Header>
         <StackPanel>
-            <Grid Background="AntiqueWhite">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
@@ -39,62 +39,46 @@
                 <TextBox
                     Grid.Column="1"
                     Margin="2"
-                    MaxLength="1000"
                     VerticalAlignment="Center"
                     Controls:TextBoxHelper.ClearTextButton="True"
                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                     FontFamily="Segoe UI"
+                    MaxLength="1000"
                     Text="{Binding MedicamentsOptional, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
-            <DataGrid
-                AlternatingRowBackground="White"
-                AutoGenerateColumns="False"
-                HorizontalScrollBarVisibility="Disabled"
+            <ListBox
+                Name="MedicamentsListBox"
                 ItemsSource="{Binding Medicaments, UpdateSourceTrigger=PropertyChanged}"
-                RowBackground="White"
-                ScrollViewer.CanContentScroll="False"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                ScrollViewer.VerticalScrollBarVisibility="Disabled"
                 SelectedItem="{Binding SelectedMedicament, UpdateSourceTrigger=PropertyChanged}"
-                SelectionMode="Single">
-                <DataGrid.Columns>
-                    <!--
-                        IsChecked
-                    -->
-                    <DataGridTemplateColumn Width="auto" SortMemberPath="IsChecked">
-                        <DataGridTemplateColumn.Header>
-                            <icon:Material Kind="CheckCircleOutline" />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox
-                                    Margin="2"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <!--
-                        Name
-                    -->
-                    <DataGridTemplateColumn
-                        Width="*"
-                        Header="Nazwa"
-                        SortMemberPath="Name">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label
-                                    Margin="2"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                SelectionChanged="MedicamentsListBox_SelectionChanged">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="BorderThickness" Value="0" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="White" Orientation="Horizontal">
+                            <CheckBox
+                                Margin="7,2,2,2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+                            <Label
+                                Margin="2"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
-
     </GroupBox>
 </UserControl>

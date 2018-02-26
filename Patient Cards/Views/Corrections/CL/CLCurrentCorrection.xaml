@@ -25,7 +25,7 @@
                     Foreground="White" />
             </GroupBox.Header>
             <StackPanel>
-                <Grid Background="AntiqueWhite">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="4*" />
@@ -80,8 +80,7 @@
                         -->
                         <DataGridTemplateColumn
                             Width="auto"
-                            Header="CL"
-                            SortMemberPath="EyeName">
+                            Header="CL">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Label
@@ -97,15 +96,13 @@
                         -->
                         <DataGridTemplateColumn
                             Width="*"
-                            Header="Sph"
-                            SortMemberPath="Sphere">
+                            Header="Sph">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.ClearTextButton="True"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="GhostWhite"
                                         Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
@@ -117,15 +114,13 @@
                         -->
                         <DataGridTemplateColumn
                             Width="*"
-                            Header="Cyl"
-                            SortMemberPath="Cylinder">
+                            Header="Cyl">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.ClearTextButton="True"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="GhostWhite"
                                         Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
@@ -137,15 +132,13 @@
                         -->
                         <DataGridTemplateColumn
                             Width="*"
-                            Header="Oś"
-                            SortMemberPath="Axis">
+                            Header="Oś">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.ClearTextButton="True"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="GhostWhite"
                                         Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
@@ -157,15 +150,13 @@
                         -->
                         <DataGridTemplateColumn
                             Width="*"
-                            Header="Add"
-                            SortMemberPath="Addition">
+                            Header="Add">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.ClearTextButton="True"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="GhostWhite"
                                         Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
@@ -177,15 +168,13 @@
                         -->
                         <DataGridTemplateColumn
                             Width="*"
-                            Header="BC"
-                            SortMemberPath="BC">
+                            Header="BC">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.ClearTextButton="True"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="GhostWhite"
                                         Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
@@ -197,15 +186,13 @@
                         -->
                         <DataGridTemplateColumn
                             Width="*"
-                            Header="Visus"
-                            SortMemberPath="Visus">
+                            Header="Visus">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.ClearTextButton="True"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="GhostWhite"
                                         Text="{Binding Visus, UpdateSourceTrigger=PropertyChanged}" />
