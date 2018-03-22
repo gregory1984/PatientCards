@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -59,17 +61,16 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetCorrections();
-                });
+                SetCorrections();
             }));
         }
 
-        private void SetCorrections()
+        private async void SetCorrections()
         {
+            IList<CLCurrentCorrectionDTO> corrections = await Task.Run(() => correctionService.GetCLCurrentCorrections());
+
             Corrections = new ObservableCollection<CLCurrentCorrectionEyeViewModel>();
-            foreach (CLCurrentCorrectionDTO c in correctionService.GetCLCurrentCorrections())
+            foreach (CLCurrentCorrectionDTO c in corrections)
             {
                 Corrections.Add(new CLCurrentCorrectionEyeViewModel(c));
             }

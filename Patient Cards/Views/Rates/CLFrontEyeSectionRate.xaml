@@ -24,7 +24,7 @@
             AlternatingRowBackground="White"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"
-            ItemsSource="{Binding Issues, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding Issues, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
             RowBackground="White"
             ScrollViewer.CanContentScroll="False"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -62,7 +62,7 @@
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 Text="{Binding CurrentVisitRate, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -81,7 +81,7 @@
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 Text="{Binding ControlVisitRate, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

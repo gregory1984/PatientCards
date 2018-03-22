@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -144,13 +146,6 @@ namespace Patient_Cards.ViewModels.Main
             set { SetProperty(ref comments, value); }
         }
 
-        private string currentGLType = "";
-        public string CurrentGLType
-        {
-            get { return currentGLType; }
-            set { SetProperty(ref currentGLType, value); }
-        }
-
         private string controlVisitDate = "";
         public string ControlVisitDate
         {
@@ -170,34 +165,36 @@ namespace Patient_Cards.ViewModels.Main
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetDates();
-                    SetDistances();
-                    SetCLProfessionConditions();
-                });
+                SetDistances();
+                SetCLProfessionConditions();
+                SetDates();
             }));
         }
 
         private void SetDates()
         {
+            //  TODO: Implement async either.
             CurrentVisitDate = DateTime.Today;
         }
 
-        private void SetDistances()
+        private async void SetDistances()
         {
+            IDictionary<int, DistanceDTO> distances = await Task.Run(() => dictionariesService.Distances);
+
             Distances = new ObservableCollection<DistanceDTO> { new DistanceDTO { Id = null, Name = "-- Wybierz --" } };
-            foreach (DistanceDTO d in dictionariesService.Distances.Values)
+            foreach (DistanceDTO d in distances.Values)
             {
-                distances.Add(d);
+                Distances.Add(d);
             }
             SelectedDistance = Distances.First();
         }
 
-        private void SetCLProfessionConditions()
+        private async void SetCLProfessionConditions()
         {
+            IDictionary<int, CLProfessionConditionDTO> conditions = await Task.Run(() => dictionariesService.CLProfessionConditions);
+
             CLProfessionConditions = new ObservableCollection<CLProfessionConditionDTO> { new CLProfessionConditionDTO { Id = null, Name = "-- Wybierz --" } };
-            foreach (CLProfessionConditionDTO d in dictionariesService.CLProfessionConditions.Values)
+            foreach (CLProfessionConditionDTO d in conditions.Values)
             {
                 CLProfessionConditions.Add(d);
             }

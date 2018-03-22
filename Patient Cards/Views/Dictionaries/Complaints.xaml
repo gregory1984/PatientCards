@@ -48,7 +48,7 @@
             </Grid>
             <ListBox
                 Name="ComplaintsListBox"
-                ItemsSource="{Binding Complaints, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding Complaints, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                 SelectedItem="{Binding SelectedComplaint, UpdateSourceTrigger=PropertyChanged}"
                 SelectionChanged="ComplaintsListBox_SelectionChanged">
                 <ListBox.ItemContainerStyle>

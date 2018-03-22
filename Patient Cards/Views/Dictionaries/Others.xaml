@@ -48,7 +48,7 @@
             </Grid>
             <ListBox
                 Name="OthersListBox"
-                ItemsSource="{Binding Others, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding Others, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                 SelectedItem="{Binding SelectedOther, UpdateSourceTrigger=PropertyChanged}"
                 SelectionChanged="OthersListBox_SelectionChanged">
                 <ListBox.ItemContainerStyle>

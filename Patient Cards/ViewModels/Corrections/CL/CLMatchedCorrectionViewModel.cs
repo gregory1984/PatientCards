@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -131,23 +133,22 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetCorrections(CLCorrectionType.ForTesting);
-                    SetCorrections(CLCorrectionType.ForTrading);
+                SetCorrections(CLCorrectionType.ForTesting);
+                SetCorrections(CLCorrectionType.ForTrading);
 
-                    SetWearingTypes();
-                });
+                SetWearingTypes();
             }));
         }
 
-        private void SetCorrections(CLCorrectionType cLCorrectionType)
+        private async void SetCorrections(CLCorrectionType cLCorrectionType)
         {
             IList<CLMatchedCorrectionEyeViewModel> corrections = null;
             CLMatchedCorrectionEyeViewModel selectedCorrection = null;
 
+            IList<CLMatchedCorrectionDTO> dtos = await Task.Run(() => correctionService.GetCLMatchedCorrections(cLCorrectionType));
+
             corrections = new ObservableCollection<CLMatchedCorrectionEyeViewModel>();
-            foreach (CLMatchedCorrectionDTO d in correctionService.GetCLMatchedCorrections(cLCorrectionType))
+            foreach (CLMatchedCorrectionDTO d in dtos)
             {
                 corrections.Add(new CLMatchedCorrectionEyeViewModel(d));
             }
@@ -160,15 +161,17 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             }
         }
 
-        private void SetWearingTypes()
+        private async void SetWearingTypes()
         {
+            IDictionary<int, CLWearingTypeDTO> types = await Task.Run(() => dictionariesService.CLWearingTypes);
+
             ForTestingWearingTypes = new ObservableCollection<CLWearingTypeDTO>();
             ForTestingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "-- Wybierz --" });
 
             ForTradingWearingTypes = new ObservableCollection<CLWearingTypeDTO>();
             ForTradingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "-- Wybierz --" });
 
-            foreach (CLWearingTypeDTO d in dictionariesService.CLWearingTypes.Values)
+            foreach (CLWearingTypeDTO d in types.Values)
             {
                 ForTestingWearingTypes.Add(d);
                 ForTradingWearingTypes.Add(d);

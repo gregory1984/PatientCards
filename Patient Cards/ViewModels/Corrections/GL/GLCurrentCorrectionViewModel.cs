@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -37,6 +39,13 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             get { return fromWhen; }
             set { SetProperty(ref fromWhen, value); }
         }
+
+        private string currentGLType = "";
+        public string CurrentGLType
+        {
+            get { return currentGLType; }
+            set { SetProperty(ref currentGLType, value); }
+        }
         #endregion
 
         private readonly ICorrectionService correctionService;
@@ -52,17 +61,16 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetCorrections();
-                });
+                SetCorrections();
             }));
         }
 
-        private void SetCorrections()
+        private async void SetCorrections()
         {
+            IList<GLCurrentCorrectionDTO> corrections = await Task.Run(() => correctionService.GetGLCurrentCorrections());
+
             Corrections = new ObservableCollection<GLCurrentCorrectionEyeViewModel>();
-            foreach (GLCurrentCorrectionDTO c in correctionService.GetGLCurrentCorrections())
+            foreach (GLCurrentCorrectionDTO c in corrections)
             {
                 Corrections.Add(new GLCurrentCorrectionEyeViewModel(c, dictionariesService));
             }

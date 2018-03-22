@@ -144,6 +144,7 @@ namespace Patient_Cards_Model.Services
 
         public IList<CLCurrentCorrectionDTO> GetCLCurrentCorrections(int? cardId = null)
         {
+            //throw new Exception("ex");
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;

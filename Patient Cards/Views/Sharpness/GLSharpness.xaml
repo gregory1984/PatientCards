@@ -24,7 +24,7 @@
             AlternatingRowBackground="White"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"
-            ItemsSource="{Binding Sharpnesses, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding Sharpnesses, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
             RowBackground="White"
             ScrollViewer.CanContentScroll="False"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -61,7 +61,7 @@
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 Text="{Binding CurrentCorrection, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -79,7 +79,7 @@
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 Text="{Binding SC, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -97,7 +97,7 @@
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 Text="{Binding CC, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -80,22 +82,22 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetCorrections(GLCorrectionType.FromPhoropter);
-                    SetCorrections(GLCorrectionType.FinallyMatched);
-                    SetFinallyCorrectionTypes();
-                });
+                SetCorrections(GLCorrectionType.FromPhoropter);
+                SetCorrections(GLCorrectionType.FinallyMatched);
+
+                SetFinallyCorrectionTypes();
             }));
         }
 
-        private void SetCorrections(GLCorrectionType gLCorrectionType)
+        private async void SetCorrections(GLCorrectionType gLCorrectionType)
         {
             IList<GLMatchedCorrectionEyeViewModel> corrections = null;
             GLMatchedCorrectionEyeViewModel selectedCorrection = null;
 
+            IList<GLMatchedCorrectionDTO> dtos = await Task.Run(() => correctionService.GetGLMatchedCorrections(gLCorrectionType));
+
             corrections = new ObservableCollection<GLMatchedCorrectionEyeViewModel>();
-            foreach (GLMatchedCorrectionDTO d in correctionService.GetGLMatchedCorrections(gLCorrectionType))
+            foreach (GLMatchedCorrectionDTO d in dtos)
             {
                 corrections.Add(new GLMatchedCorrectionEyeViewModel(d, dictionariesService));
             }
@@ -108,11 +110,13 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             }
         }
 
-        private void SetFinallyCorrectionTypes()
+        private async void SetFinallyCorrectionTypes()
         {
+            IDictionary<int, GLFinallyMatchedCorrectionTypeDTO> types = await Task.Run(() => dictionariesService.GLFinallyMatchedCorrectionTypes);
+
             FinallyCorrectionTypes = new ObservableCollection<GLFinallyMatchedCorrectionTypeDTO>();
             FinallyCorrectionTypes.Add(new GLFinallyMatchedCorrectionTypeDTO { Id = null, Name = "-- Wybierz --" });
-            foreach (GLFinallyMatchedCorrectionTypeDTO t in dictionariesService.GLFinallyMatchedCorrectionTypes.Values)
+            foreach (GLFinallyMatchedCorrectionTypeDTO t in types.Values)
             {
                 FinallyCorrectionTypes.Add(t);
             }

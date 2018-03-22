@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -33,7 +35,7 @@ namespace Patient_Cards.ViewModels.Sharpness
 
         private readonly ISharpnessService sharpnessService;
 
-        public CLSharpnessViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, 
+        public CLSharpnessViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer,
                                     ISharpnessService sharpnessService, IDictionariesService dictionariesService)
             : base(eventAggregator, unityContainer, dictionariesService)
         {
@@ -45,19 +47,18 @@ namespace Patient_Cards.ViewModels.Sharpness
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetSharpnesses();
-                });
+                SetSharpnesses();
             }));
         }
 
-        private void SetSharpnesses()
+        private async void SetSharpnesses()
         {
+            IList<CLSharpnessDTO> sharpnesses = await Task.Run(() => sharpnessService.GetCLSharpnesses());
+
             Sharpnesses = new ObservableCollection<CLSharpnessEyeViewModel>();
             SelectedSharpness = null;
 
-            foreach (CLSharpnessDTO s in sharpnessService.GetCLSharpnesses())
+            foreach (CLSharpnessDTO s in sharpnesses)
             {
                 Sharpnesses.Add(new CLSharpnessEyeViewModel(s));
             }

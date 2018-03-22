@@ -34,7 +34,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <main:PersonalData />
+            <main:PersonalData  />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -60,52 +60,15 @@
                     <gl:GLMatchedCorrection />
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Soczewki">
+            <TabItem Header="Soczewki kontaktowe">
                 <ScrollViewer>
                     <StackPanel>
                         <rate:CLFrontEyeSectionRate />
                         <shar:CLSharpness />
                         <cl:CLMatchedCorrection />
-                        <rate:CLMatchedCorrectionRate />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>
-
-
-        <!--<ScrollViewer Grid.Row="0" Grid.Column="1">
-            <StackPanel>
-                <main:PersonalData />
-
-
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <dict:Complaints Grid.Column="0" />
-                    <dict:Illnesses Grid.Column="1" />
-                    <dict:Medicaments Grid.Column="2" />
-                    <dict:Others Grid.Column="3" />
-                </Grid>
-
-                <cl:CLCurrentCorrection />
-                <cl:CLMatchedCorrection />
-                <gl:GLCurrentCorrection />
-                <gl:GLMatchedCorrection />
-
-                <rate:CLFrontEyeSectionRate />
-                <rate:CLMatchedCorrectionRate />
-
-                <shar:CLSharpness />
-                <shar:GLSharpness />
-            </StackPanel>
-        </ScrollViewer>-->
     </Grid>
 </Controls:MetroWindow>

@@ -286,7 +286,7 @@
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        ItemsSource="{Binding CLProfessionConditions, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding CLProfessionConditions, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                         SelectedItem="{Binding SelectedCLProfessionCondition, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
                 <!--
@@ -327,14 +327,12 @@
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        ItemsSource="{Binding Distances, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding Distances, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                         SelectedItem="{Binding SelectedDistance, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -355,23 +353,6 @@
                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                     MaxLength="1000"
                     Text="{Binding Treatments, UpdateSourceTrigger=PropertyChanged}" />
-                <!--
-                    Current GL type
-                -->
-                <Label
-                    Grid.Column="2"
-                    Margin="2"
-                    VerticalAlignment="Center"
-                    Content="Dotychczasowe okulary:" />
-                <TextBox
-                    Grid.Column="3"
-                    Margin="2"
-                    VerticalAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Controls:TextBoxHelper.ClearTextButton="True"
-                    Controls:TextBoxHelper.SelectAllOnFocus="True"
-                    MaxLength="1000"
-                    Text="{Binding CurrentGLType, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
         </StackPanel>
 

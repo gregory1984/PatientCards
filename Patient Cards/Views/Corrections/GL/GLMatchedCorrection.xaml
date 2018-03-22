@@ -28,7 +28,7 @@
                 AlternatingRowBackground="White"
                 AutoGenerateColumns="False"
                 HorizontalScrollBarVisibility="Disabled"
-                ItemsSource="{Binding PhoropterCorrections, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding PhoropterCorrections, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                 RowBackground="White"
                 ScrollViewer.CanContentScroll="False"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -61,11 +61,14 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox
+                                    Foreground="Red"
+                                    FontSize="18"
+                                    Padding="0"
                                     VerticalAlignment="Center"
                                     HorizontalContentAlignment="Right"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                    BorderBrush="GhostWhite"
+                                    BorderBrush="LightGray"
                                     Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -83,7 +86,7 @@
                                     HorizontalContentAlignment="Right"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                    BorderBrush="GhostWhite"
+                                    BorderBrush="LightGray"
                                     Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -101,7 +104,7 @@
                                     HorizontalContentAlignment="Right"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                    BorderBrush="GhostWhite"
+                                    BorderBrush="LightGray"
                                     Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -119,7 +122,7 @@
                                     HorizontalContentAlignment="Right"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                    BorderBrush="GhostWhite"
+                                    BorderBrush="LightGray"
                                     Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -137,7 +140,7 @@
                                     HorizontalContentAlignment="Right"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                    BorderBrush="GhostWhite"
+                                    BorderBrush="LightGray"
                                     Text="{Binding Prism, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -154,7 +157,7 @@
                                     Margin="2"
                                     VerticalAlignment="Center"
                                     HorizontalContentAlignment="Center"
-                                    BorderBrush="GhostWhite"
+                                    BorderBrush="LightGray"
                                     FontFamily="Segoe UI"
                                     ItemsSource="{Binding Bases, UpdateSourceTrigger=PropertyChanged}"
                                     SelectedItem="{Binding SelectedBase, UpdateSourceTrigger=PropertyChanged}" />
@@ -218,7 +221,7 @@
                     AlternatingRowBackground="White"
                     AutoGenerateColumns="False"
                     HorizontalScrollBarVisibility="Disabled"
-                    ItemsSource="{Binding FinallyCorrections, UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding FinallyCorrections, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                     RowBackground="White"
                     ScrollViewer.CanContentScroll="False"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -255,7 +258,7 @@
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="GhostWhite"
+                                        BorderBrush="LightGray"
                                         Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -273,7 +276,7 @@
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="GhostWhite"
+                                        BorderBrush="LightGray"
                                         Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -291,7 +294,7 @@
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="GhostWhite"
+                                        BorderBrush="LightGray"
                                         Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -309,7 +312,7 @@
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="GhostWhite"
+                                        BorderBrush="LightGray"
                                         Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -327,7 +330,7 @@
                                         HorizontalContentAlignment="Right"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="GhostWhite"
+                                        BorderBrush="LightGray"
                                         Text="{Binding Prism, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -344,7 +347,7 @@
                                         Margin="2"
                                         VerticalAlignment="Center"
                                         HorizontalContentAlignment="Center"
-                                        BorderBrush="GhostWhite"
+                                        BorderBrush="LightGray"
                                         FontFamily="Segoe UI"
                                         ItemsSource="{Binding Bases, UpdateSourceTrigger=PropertyChanged}"
                                         SelectedItem="{Binding SelectedBase, UpdateSourceTrigger=PropertyChanged}" />

@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -55,14 +57,16 @@ namespace Patient_Cards.ViewModels.Dictionaries
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() => SetComplaints());
+                SetMedicaments();
             }));
         }
 
-        private void SetComplaints()
+        private async void SetMedicaments()
         {
+            IDictionary<int, MedicamentDTO> medicaments = await Task.Run(() => dictionariesService.Medicaments);
+
             Medicaments = new ObservableCollection<DictionaryViewModel>();
-            foreach (MedicamentDTO c in dictionariesService.Medicaments.Values)
+            foreach (MedicamentDTO c in medicaments.Values)
             {
                 Medicaments.Add(new DictionaryViewModel(c.Id.Value, c.Name));
             }

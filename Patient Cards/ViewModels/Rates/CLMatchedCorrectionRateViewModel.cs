@@ -3,6 +3,8 @@ using Prism.Mvvm;
 using Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
@@ -46,17 +48,16 @@ namespace Patient_Cards.ViewModels.Rates
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                eventAggregator.ExecuteSafety(() =>
-                {
-                    SetRates();
-                });
+                SetRates();
             }));
         }
 
-        private void SetRates()
+        private async void SetRates()
         {
+            IList<CLMatchedCorrectionRateDTO> rates = await Task.Run(() => ratesService.GetCLMatchedCorrectionRates());
+
             Issues = new ObservableCollection<CLMatchedCorrectionRateIssueViewModel>();
-            foreach (CLMatchedCorrectionRateDTO r in ratesService.GetCLMatchedCorrectionRates())
+            foreach (CLMatchedCorrectionRateDTO r in rates)
             {
                 Issues.Add(new CLMatchedCorrectionRateIssueViewModel(r));
             }

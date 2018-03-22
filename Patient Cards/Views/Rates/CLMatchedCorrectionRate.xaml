@@ -24,7 +24,7 @@
             AlternatingRowBackground="White"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"
-            ItemsSource="{Binding Issues, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding Issues, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
             RowBackground="White"
             ScrollViewer.CanContentScroll="False"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -62,7 +62,7 @@
                                 MaxLength="1000"
                                 VerticalAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 FontFamily="Segoe UI"
                                 Text="{Binding CurrentVisitRate, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
@@ -82,7 +82,7 @@
                                 MaxLength="1000"
                                 VerticalAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                BorderBrush="GhostWhite"
+                                BorderBrush="LightGray"
                                 FontFamily="Segoe UI"
                                 Text="{Binding ControlVisitRate, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
