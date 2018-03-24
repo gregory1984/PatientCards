@@ -14,46 +14,45 @@
     </i:Interaction.Triggers>
     <GroupBox Padding="0">
         <GroupBox.Header>
-            <Label
+            <TextBlock
+                Padding="5"
                 VerticalAlignment="Center"
-                Content="OSTROŚĆ WZROKU: CL"
                 FontFamily="SegoeUI"
-                Foreground="White" />
+                Foreground="White"
+                Text="OSTROŚĆ WZROKU: CL" />
         </GroupBox.Header>
         <DataGrid
+            Height="95"
+            MaxHeight="95"
             AlternatingRowBackground="White"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"
             ItemsSource="{Binding Sharpnesses, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
             RowBackground="White"
-            ScrollViewer.CanContentScroll="False"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="Disabled"
             SelectedItem="{Binding SelectedSharpness, UpdateSourceTrigger=PropertyChanged}"
-            SelectionMode="Single">
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <!--
                     Visus
                 -->
-                <DataGridTemplateColumn
-                    Width="auto"
-                    Header="VISUS">
+                <DataGridTemplateColumn Width="auto" Header="VISUS">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Label
+                            <TextBlock
                                 Margin="2"
+                                Padding="5"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Content="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
+                                Foreground="Black"
+                                Text="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <!--
                     Current correction
                 -->
-                <DataGridTemplateColumn
-                    Width="*"
-                    Header="Dotychczasowa korekcja">
+                <DataGridTemplateColumn Width="*" Header="Dotychczasowa korekcja">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
@@ -62,6 +61,7 @@
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
+                                FontSize="18"
                                 Text="{Binding CurrentCorrection, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -69,9 +69,7 @@
                 <!--
                     CC
                 -->
-                <DataGridTemplateColumn
-                    Width="*"
-                    Header="CC (obecna korekcja)">
+                <DataGridTemplateColumn Width="*" Header="CC (obecna korekcja)">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
@@ -80,6 +78,7 @@
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
+                                FontSize="18"
                                 Text="{Binding CC, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

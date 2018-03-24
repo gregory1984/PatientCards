@@ -166,10 +166,10 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             IDictionary<int, CLWearingTypeDTO> types = await Task.Run(() => dictionariesService.CLWearingTypes);
 
             ForTestingWearingTypes = new ObservableCollection<CLWearingTypeDTO>();
-            ForTestingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "-- Wybierz --" });
+            ForTestingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "Wybierz" });
 
             ForTradingWearingTypes = new ObservableCollection<CLWearingTypeDTO>();
-            ForTradingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "-- Wybierz --" });
+            ForTradingWearingTypes.Add(new CLWearingTypeDTO { Id = null, Name = "Wybierz" });
 
             foreach (CLWearingTypeDTO d in types.Values)
             {

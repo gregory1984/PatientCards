@@ -13,19 +13,20 @@
             <i:InvokeCommandAction Command="{Binding Loaded}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <StackPanel>
+    <VirtualizingStackPanel>
         <!--
             For testing
         -->
         <GroupBox Padding="0">
             <GroupBox.Header>
-                <Label
+                <TextBlock
+                    Padding="5"
                     VerticalAlignment="Center"
-                    Content="DOBRANE I WYDANE CL PRÓBNE"
                     FontFamily="SegoeUI"
-                    Foreground="White" />
+                    Foreground="White"
+                    Text="DOBRANE I WYDANE CL PRÓBNE" />
             </GroupBox.Header>
-            <StackPanel>
+            <VirtualizingStackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
@@ -50,7 +51,7 @@
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         FontFamily="Segoe UI"
-                        ItemsSource="{Binding ForTestingWearingTypes, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding ForTestingWearingTypes, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                         SelectedItem="{Binding SelectedForTestingWearingType, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="2"
@@ -61,11 +62,11 @@
                     <TextBox
                         Grid.Column="3"
                         Margin="2"
-                        MaxLength="1000"
                         VerticalAlignment="Center"
                         Controls:TextBoxHelper.ClearTextButton="True"
                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                         FontFamily="Segoe UI"
+                        MaxLength="1000"
                         Text="{Binding ForTestingName, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="4"
@@ -77,10 +78,10 @@
                         Grid.Column="5"
                         Margin="2"
                         VerticalAlignment="Center"
-                        MaxLength="1000"
                         Controls:TextBoxHelper.ClearTextButton="True"
                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                         FontFamily="Segoe UI"
+                        MaxLength="1000"
                         Text="{Binding ForTestingVendor, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="6"
@@ -92,46 +93,44 @@
                         Grid.Column="7"
                         Margin="2"
                         VerticalAlignment="Center"
-                        MaxLength="1000"
                         Controls:TextBoxHelper.ClearTextButton="True"
                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                         FontFamily="Segoe UI"
+                        MaxLength="1000"
                         Text="{Binding ForTestingLiquid, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
                 <DataGrid
+                    Height="95"
+                    MaxHeight="95"
                     AlternatingRowBackground="White"
                     AutoGenerateColumns="False"
                     HorizontalScrollBarVisibility="Disabled"
                     ItemsSource="{Binding ForTestingCorrections, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                     RowBackground="White"
-                    ScrollViewer.CanContentScroll="False"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
                     SelectedItem="{Binding SelectedForTestingCorrection, UpdateSourceTrigger=PropertyChanged}"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
                         <!--
                             Visus
                         -->
-                        <DataGridTemplateColumn
-                            Width="auto"
-                            Header="">
+                        <DataGridTemplateColumn Width="auto" Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label
+                                    <TextBlock
                                         Margin="2"
+                                        Padding="5"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Content="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
+                                        Foreground="Black"
+                                        Text="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <!--
                             Sphere
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Sph">
+                        <DataGridTemplateColumn Width="*" Header="Sph">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -140,6 +139,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -147,9 +147,7 @@
                         <!--
                             Cylinder
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Cyl">
+                        <DataGridTemplateColumn Width="*" Header="Cyl">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -158,6 +156,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -165,9 +164,7 @@
                         <!--
                             Axis
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Oś">
+                        <DataGridTemplateColumn Width="*" Header="Oś">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -176,6 +173,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -183,9 +181,7 @@
                         <!--
                             Addition
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Add">
+                        <DataGridTemplateColumn Width="*" Header="Add">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -194,6 +190,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -201,9 +198,7 @@
                         <!--
                             BC
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="BC">
+                        <DataGridTemplateColumn Width="*" Header="BC">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -212,6 +207,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -219,9 +215,7 @@
                         <!--
                             DIA
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="DIA">
+                        <DataGridTemplateColumn Width="*" Header="DIA">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -230,18 +224,19 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding DIA, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
+            </VirtualizingStackPanel>
         </GroupBox>
         <!--
             Rate
         -->
-        <rate:CLMatchedCorrectionRate/>
+        <rate:CLMatchedCorrectionRate />
         <!--
             For trading
         -->
@@ -253,7 +248,7 @@
                     FontFamily="SegoeUI"
                     Foreground="White" />
             </GroupBox.Header>
-            <StackPanel>
+            <VirtualizingStackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
@@ -278,7 +273,7 @@
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Center"
                         FontFamily="Segoe UI"
-                        ItemsSource="{Binding ForTradingWearingTypes, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding ForTradingWearingTypes, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                         SelectedItem="{Binding SelectedForTradingWearingType, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="2"
@@ -289,11 +284,11 @@
                     <TextBox
                         Grid.Column="3"
                         Margin="2"
-                        MaxLength="1000"
                         VerticalAlignment="Center"
                         Controls:TextBoxHelper.ClearTextButton="True"
                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                         FontFamily="Segoe UI"
+                        MaxLength="1000"
                         Text="{Binding ForTradingName, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="4"
@@ -304,11 +299,11 @@
                     <TextBox
                         Grid.Column="5"
                         Margin="2"
-                        MaxLength="1000"
                         VerticalAlignment="Center"
                         Controls:TextBoxHelper.ClearTextButton="True"
                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                         FontFamily="Segoe UI"
+                        MaxLength="1000"
                         Text="{Binding ForTradingVendor, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="6"
@@ -319,47 +314,45 @@
                     <TextBox
                         Grid.Column="7"
                         Margin="2"
-                        MaxLength="1000"
                         VerticalAlignment="Center"
                         Controls:TextBoxHelper.ClearTextButton="True"
                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                         FontFamily="Segoe UI"
+                        MaxLength="1000"
                         Text="{Binding ForTradingLiquid, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
                 <DataGrid
+                    Height="95"
+                    MaxHeight="95"
                     AlternatingRowBackground="White"
                     AutoGenerateColumns="False"
                     HorizontalScrollBarVisibility="Disabled"
                     ItemsSource="{Binding ForTradingCorrections, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                     RowBackground="White"
-                    ScrollViewer.CanContentScroll="False"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
                     SelectedItem="{Binding SelectedForTradingCorrection, UpdateSourceTrigger=PropertyChanged}"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
                         <!--
                             Visus
                         -->
-                        <DataGridTemplateColumn
-                            Width="auto"
-                            Header="">
+                        <DataGridTemplateColumn Width="auto" Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label
+                                    <TextBlock
                                         Margin="2"
+                                        Padding="5"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Content="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
+                                        Foreground="Black"
+                                        Text="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <!--
                             Sphere
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Sph">
+                        <DataGridTemplateColumn Width="*" Header="Sph">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -368,6 +361,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -375,9 +369,7 @@
                         <!--
                             Cylinder
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Cyl">
+                        <DataGridTemplateColumn Width="*" Header="Cyl">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -386,6 +378,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -393,9 +386,7 @@
                         <!--
                             Axis
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Oś">
+                        <DataGridTemplateColumn Width="*" Header="Oś">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -404,6 +395,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -411,9 +403,7 @@
                         <!--
                             Addition
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="Add">
+                        <DataGridTemplateColumn Width="*" Header="Add">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -422,6 +412,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -429,9 +420,7 @@
                         <!--
                             BC
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="BC">
+                        <DataGridTemplateColumn Width="*" Header="BC">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -440,6 +429,7 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -447,9 +437,7 @@
                         <!--
                             DIA
                         -->
-                        <DataGridTemplateColumn
-                            Width="*"
-                            Header="DIA">
+                        <DataGridTemplateColumn Width="*" Header="DIA">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBox
@@ -458,13 +446,14 @@
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
+                                        FontSize="18"
                                         Text="{Binding DIA, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
+            </VirtualizingStackPanel>
         </GroupBox>
-    </StackPanel>
+    </VirtualizingStackPanel>
 </UserControl>

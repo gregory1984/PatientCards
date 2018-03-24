@@ -28,6 +28,9 @@ namespace Patient_Cards.ViewModels.Base
             this.dictionariesService = dictionariesService;
         }
 
+        protected void PropagateException(Exception ex)
+            => eventAggregator.GetEvent<ExceptionOccuredEvent>().Publish(ex);
+
         protected void SubscribeExceptionHandling()
             => exceptionOccuredToken = eventAggregator.GetEvent<ExceptionOccuredEvent>()
                 .Subscribe(ex => ExceptionOccured?.Invoke(ex));

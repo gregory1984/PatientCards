@@ -181,7 +181,7 @@ namespace Patient_Cards.ViewModels.Main
         {
             IDictionary<int, DistanceDTO> distances = await Task.Run(() => dictionariesService.Distances);
 
-            Distances = new ObservableCollection<DistanceDTO> { new DistanceDTO { Id = null, Name = "-- Wybierz --" } };
+            Distances = new ObservableCollection<DistanceDTO> { new DistanceDTO { Id = null, Name = "Wybierz" } };
             foreach (DistanceDTO d in distances.Values)
             {
                 Distances.Add(d);
@@ -193,7 +193,7 @@ namespace Patient_Cards.ViewModels.Main
         {
             IDictionary<int, CLProfessionConditionDTO> conditions = await Task.Run(() => dictionariesService.CLProfessionConditions);
 
-            CLProfessionConditions = new ObservableCollection<CLProfessionConditionDTO> { new CLProfessionConditionDTO { Id = null, Name = "-- Wybierz --" } };
+            CLProfessionConditions = new ObservableCollection<CLProfessionConditionDTO> { new CLProfessionConditionDTO { Id = null, Name = "Wybierz" } };
             foreach (CLProfessionConditionDTO d in conditions.Values)
             {
                 CLProfessionConditions.Add(d);

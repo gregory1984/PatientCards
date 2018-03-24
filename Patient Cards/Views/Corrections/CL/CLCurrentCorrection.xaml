@@ -12,182 +12,189 @@
             <i:InvokeCommandAction Command="{Binding Loaded}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <StackPanel>
-        <!--
-            Current correcion
-        -->
-        <GroupBox Padding="0">
-            <GroupBox.Header>
+    <!--
+        Current correcion
+    -->
+    <GroupBox Padding="0">
+        <GroupBox.Header>
+            <TextBlock
+                Padding="5"
+                VerticalAlignment="Center"
+                FontFamily="SegoeUI"
+                Foreground="White"
+                Text="DOTYCHCZASOWA KOREKCJA W CL" />
+        </GroupBox.Header>
+        <VirtualizingStackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
                 <Label
+                    Grid.Column="0"
+                    Margin="2"
                     VerticalAlignment="Center"
-                    Content="DOTYCHCZASOWA KOREKCJA W CL"
-                    FontFamily="SegoeUI"
-                    Foreground="White" />
-            </GroupBox.Header>
-            <StackPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="4*" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="2"
-                        VerticalAlignment="Center"
-                        Content="Od kiedy:"
-                        FontFamily="Segoe UI" />
-                    <TextBox
-                        Grid.Column="1"
-                        Margin="2"
-                        VerticalAlignment="Center"
-                        Controls:TextBoxHelper.ClearTextButton="True"
-                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                        FontFamily="Segoe UI"
-                        MaxLength="1000"
-                        Text="{Binding FromWhen, UpdateSourceTrigger=PropertyChanged}" />
-                    <Label
-                        Grid.Column="2"
-                        Margin="2"
-                        VerticalAlignment="Center"
-                        Content="VISUS OU:"
-                        FontFamily="Segoe UI" />
-                    <TextBox
-                        Grid.Column="3"
-                        Margin="2"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Right"
-                        VerticalContentAlignment="Center"
-                        Controls:TextBoxHelper.ClearTextButton="True"
-                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                        Text="{Binding VisusBothEyes, UpdateSourceTrigger=PropertyChanged}" />
-                </Grid>
-                <DataGrid
-                    AlternatingRowBackground="White"
-                    AutoGenerateColumns="False"
-                    HorizontalScrollBarVisibility="Disabled"
-                    ItemsSource="{Binding Corrections, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
-                    RowBackground="White"
-                    ScrollViewer.CanContentScroll="False"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                    SelectedItem="{Binding SelectedCorrection, UpdateSourceTrigger=PropertyChanged}"
-                    SelectionMode="Single">
-                    <DataGrid.Columns>
-                        <!--
-                            CL
-                        -->
-                        <DataGridTemplateColumn Width="auto" Header="CL">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Label
-                                        Margin="2"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Content="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <!--
-                            Sphere
-                        -->
-                        <DataGridTemplateColumn Width="*" Header="Sph">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox
-                                        VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
-                                        VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="LightGray"
-                                        Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <!--
-                            Cylinder
-                        -->
-                        <DataGridTemplateColumn Width="*" Header="Cyl">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox
-                                        VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
-                                        VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="LightGray"
-                                        Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <!--
-                            Axis
-                        -->
-                        <DataGridTemplateColumn Width="*" Header="Oś">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox
-                                        VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
-                                        VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="LightGray"
-                                        Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <!--
-                            Addition
-                        -->
-                        <DataGridTemplateColumn Width="*" Header="Add">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox
-                                        VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
-                                        VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="LightGray"
-                                        Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <!--
-                            BC
-                        -->
-                        <DataGridTemplateColumn Width="*" Header="BC">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox
-                                        VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
-                                        VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="LightGray"
-                                        Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <!--
-                            Visus
-                        -->
-                        <DataGridTemplateColumn Width="*" Header="Visus">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox
-                                        VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
-                                        VerticalContentAlignment="Center"
-                                        Controls:TextBoxHelper.SelectAllOnFocus="True"
-                                        BorderBrush="LightGray"
-                                        Text="{Binding Visus, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
-        </GroupBox>
-    </StackPanel>
+                    Content="Od kiedy:"
+                    FontFamily="Segoe UI" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    FontFamily="Segoe UI"
+                    MaxLength="1000"
+                    Text="{Binding FromWhen, UpdateSourceTrigger=PropertyChanged}" />
+                <Label
+                    Grid.Column="2"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    Content="VISUS OU:"
+                    FontFamily="Segoe UI" />
+                <TextBox
+                    Grid.Column="3"
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Controls:TextBoxHelper.ClearTextButton="True"
+                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                    Text="{Binding VisusBothEyes, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+            <DataGrid
+                Height="95"
+                MaxHeight="95"
+                AlternatingRowBackground="White"
+                AutoGenerateColumns="False"
+                HorizontalScrollBarVisibility="Disabled"
+                ItemsSource="{Binding Corrections, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
+                RowBackground="White"
+                SelectedItem="{Binding SelectedCorrection, UpdateSourceTrigger=PropertyChanged}"
+                SelectionMode="Single"
+                VerticalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <!--
+                        CL
+                    -->
+                    <DataGridTemplateColumn Width="auto" Header="CL">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Margin="2"
+                                    Padding="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Foreground="Black"
+                                    Text="{Binding EyeName, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        Sphere
+                    -->
+                    <DataGridTemplateColumn Width="*" Header="Sph">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                                    BorderBrush="LightGray"
+                                    FontSize="18"
+                                    Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        Cylinder
+                    -->
+                    <DataGridTemplateColumn Width="*" Header="Cyl">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                                    BorderBrush="LightGray"
+                                    FontSize="18"
+                                    Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        Axis
+                    -->
+                    <DataGridTemplateColumn Width="*" Header="Oś">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                                    BorderBrush="LightGray"
+                                    FontSize="18"
+                                    Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        Addition
+                    -->
+                    <DataGridTemplateColumn Width="*" Header="Add">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                                    BorderBrush="LightGray"
+                                    FontSize="18"
+                                    Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        BC
+                    -->
+                    <DataGridTemplateColumn Width="*" Header="BC">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                                    BorderBrush="LightGray"
+                                    FontSize="18"
+                                    Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--
+                        Visus
+                    -->
+                    <DataGridTemplateColumn Width="*" Header="Visus">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    VerticalAlignment="Center"
+                                    HorizontalContentAlignment="Right"
+                                    VerticalContentAlignment="Center"
+                                    Controls:TextBoxHelper.SelectAllOnFocus="True"
+                                    BorderBrush="LightGray"
+                                    FontSize="18"
+                                    Text="{Binding Visus, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </VirtualizingStackPanel>
+    </GroupBox>
 </UserControl>

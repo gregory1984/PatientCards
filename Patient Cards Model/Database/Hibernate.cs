@@ -24,7 +24,7 @@ namespace Patient_Cards_Model.Database
                 {
                     sessionFactory = Fluently
                         .Configure()
-                        .Database(SQLiteConfiguration.Standard.ShowSql().UsingFile("Db/PatientCards.db"))
+                        .Database(SQLiteConfiguration.Standard./*ShowSql().*/UsingFile("Db/PatientCards.db"))
                         .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Card>())
                         .ExposeConfiguration(c => new SchemaUpdate(c).Execute(false, true))
                         .BuildSessionFactory();

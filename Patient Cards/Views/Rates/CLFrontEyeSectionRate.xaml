@@ -14,55 +14,55 @@
     </i:Interaction.Triggers>
     <GroupBox Padding="0">
         <GroupBox.Header>
-            <Label
-                    VerticalAlignment="Center"
-                    Content="OCENA PRZEDNIEGO ODCINKA OKA"
-                    FontFamily="SegoeUI"
-                    Foreground="White" />
+            <TextBlock
+                Padding="5"
+                VerticalAlignment="Center"
+                FontFamily="SegoeUI"
+                Foreground="White"
+                Text="OCENA PRZEDNIEGO ODCINKA OKA" />
         </GroupBox.Header>
         <DataGrid
+            Height="638"
+            MaxHeight="638"
             AlternatingRowBackground="White"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"
             ItemsSource="{Binding Issues, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
             RowBackground="White"
-            ScrollViewer.CanContentScroll="False"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="Disabled"
             SelectedItem="{Binding SelectedIssue, UpdateSourceTrigger=PropertyChanged}"
-            SelectionMode="Single">
+            SelectionMode="Single"
+            VerticalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <!--
                     Issue
                 -->
-                <DataGridTemplateColumn
-                    Width="auto"
-                    Header="Przypadek">
+                <DataGridTemplateColumn Width="auto" Header="Przypadek">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Label
+                            <TextBlock
                                 Margin="2"
+                                Padding="5"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
-                                Content="{Binding IssueName, UpdateSourceTrigger=PropertyChanged}" />
+                                Foreground="Black"
+                                Text="{Binding IssueName, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <!--
                     CurrentVisitRate
                 -->
-                <DataGridTemplateColumn
-                    Width="*"
-                    Header="Obecna wizyta">
+                <DataGridTemplateColumn Width="*" Header="Obecna wizyta">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
-                                MaxLength="1000"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
+                                FontSize="18"
+                                MaxLength="1000"
                                 Text="{Binding CurrentVisitRate, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -70,18 +70,17 @@
                 <!--
                     ControlVisitRate
                 -->
-                <DataGridTemplateColumn
-                    Width="*"
-                    Header="Wizyta kontrolna">
+                <DataGridTemplateColumn Width="*" Header="Wizyta kontrolna">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox
-                                MaxLength="1000"
                                 VerticalAlignment="Center"
                                 HorizontalContentAlignment="Right"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
+                                FontSize="18"
+                                MaxLength="1000"
                                 Text="{Binding ControlVisitRate, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

@@ -78,7 +78,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             Addition = dto.Addition;
             Prism = dto.Prism;
 
-            Bases = new ObservableCollection<BaseDTO> { new BaseDTO { Id = null, Name = "-- Wybierz --" } };
+            Bases = new ObservableCollection<BaseDTO> { new BaseDTO { Id = null, Name = "Wybierz" } };
             foreach (BaseDTO b in dictionariesService.Bases.Values)
             {
                 Bases.Add(b);

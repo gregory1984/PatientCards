@@ -67,13 +67,17 @@ namespace Patient_Cards.ViewModels.Corrections.CL
 
         private async void SetCorrections()
         {
-            IList<CLCurrentCorrectionDTO> corrections = await Task.Run(() => correctionService.GetCLCurrentCorrections());
-
-            Corrections = new ObservableCollection<CLCurrentCorrectionEyeViewModel>();
-            foreach (CLCurrentCorrectionDTO c in corrections)
+            try
             {
-                Corrections.Add(new CLCurrentCorrectionEyeViewModel(c));
+                IList<CLCurrentCorrectionDTO> corrections = await Task.Run(() => correctionService.GetCLCurrentCorrections());
+
+                Corrections = new ObservableCollection<CLCurrentCorrectionEyeViewModel>();
+                foreach (CLCurrentCorrectionDTO c in corrections)
+                {
+                    Corrections.Add(new CLCurrentCorrectionEyeViewModel(c));
+                }
             }
+            catch (Exception ex) { PropagateException(ex); }
         }
     }
 }

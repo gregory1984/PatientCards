@@ -115,7 +115,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             IDictionary<int, GLFinallyMatchedCorrectionTypeDTO> types = await Task.Run(() => dictionariesService.GLFinallyMatchedCorrectionTypes);
 
             FinallyCorrectionTypes = new ObservableCollection<GLFinallyMatchedCorrectionTypeDTO>();
-            FinallyCorrectionTypes.Add(new GLFinallyMatchedCorrectionTypeDTO { Id = null, Name = "-- Wybierz --" });
+            FinallyCorrectionTypes.Add(new GLFinallyMatchedCorrectionTypeDTO { Id = null, Name = "Wybierz" });
             foreach (GLFinallyMatchedCorrectionTypeDTO t in types.Values)
             {
                 FinallyCorrectionTypes.Add(t);

@@ -33,41 +33,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <main:PersonalData  />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <dict:Illnesses Grid.Row="0" />
-                <dict:Others Grid.Row="1" />
-                <dict:Medicaments Grid.Row="2" />
-                <dict:Complaints Grid.Row="3" />
-            </Grid>
-        </StackPanel>
+        <VirtualizingStackPanel Grid.Row="0" Grid.Column="0">
+            <main:PersonalData />
+            <dict:Illnesses />
+            <dict:Others />
+            <dict:Medicaments />
+            <dict:Complaints />
+        </VirtualizingStackPanel>
         <TabControl Grid.Row="0" Grid.Column="1">
             <TabItem Header="Okulary">
-                <StackPanel>
+                <VirtualizingStackPanel>
                     <gl:GLCurrentCorrection />
                     <cl:CLCurrentCorrection />
                     <shar:GLSharpness />
                     <gl:GLMatchedCorrection />
-                </StackPanel>
+                </VirtualizingStackPanel>
             </TabItem>
             <TabItem Header="Soczewki kontaktowe">
-                <ScrollViewer>
-                    <StackPanel>
-                        <rate:CLFrontEyeSectionRate />
-                        <shar:CLSharpness />
-                        <cl:CLMatchedCorrection />
-                    </StackPanel>
-                </ScrollViewer>
+                <VirtualizingStackPanel>
+                    <rate:CLFrontEyeSectionRate />
+                    <shar:CLSharpness />
+                    <cl:CLMatchedCorrection />
+                </VirtualizingStackPanel>
             </TabItem>
         </TabControl>
     </Grid>
