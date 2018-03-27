@@ -40,22 +40,45 @@
             <dict:Medicaments />
             <dict:Complaints />
         </VirtualizingStackPanel>
-        <TabControl Grid.Row="0" Grid.Column="1">
-            <TabItem Header="Okulary">
-                <VirtualizingStackPanel>
-                    <gl:GLCurrentCorrection />
-                    <cl:CLCurrentCorrection />
-                    <shar:GLSharpness />
-                    <gl:GLMatchedCorrection />
-                </VirtualizingStackPanel>
-            </TabItem>
-            <TabItem Header="Soczewki kontaktowe">
-                <VirtualizingStackPanel>
-                    <rate:CLFrontEyeSectionRate />
-                    <shar:CLSharpness />
-                    <cl:CLMatchedCorrection />
-                </VirtualizingStackPanel>
-            </TabItem>
-        </TabControl>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <VirtualizingStackPanel Orientation="Horizontal">
+                <Button
+                    Margin="5"
+                    Controls:ButtonHelper.PreserveTextCase="True"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding ShowGLSetup}"
+                    Content="Okulary"
+                    FontSize="18"
+                    Foreground="{Binding GLTabHeaderBackground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource SquareButtonStyle}" />
+                <Button
+                    Margin="5"
+                    Controls:ButtonHelper.PreserveTextCase="True"
+                    Background="White"
+                    BorderThickness="0"
+                    Command="{Binding ShowCLSetup}"
+                    Content="Soczewki kontaktowe"
+                    FontSize="18"
+                    Foreground="{Binding CLTabHeaderBackground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource SquareButtonStyle}" />
+            </VirtualizingStackPanel>
+            <VirtualizingStackPanel Grid.Row="1" Visibility="{Binding GLSetupVisibility, UpdateSourceTrigger=PropertyChanged}">
+                <gl:GLCurrentCorrection />
+                <cl:CLCurrentCorrection />
+                <shar:GLSharpness />
+                <gl:GLMatchedCorrection />
+            </VirtualizingStackPanel>
+
+            <VirtualizingStackPanel Grid.Row="1" Visibility="{Binding CLSetupVisibility, UpdateSourceTrigger=PropertyChanged}">
+                <rate:CLFrontEyeSectionRate />
+                <shar:CLSharpness />
+                <cl:CLMatchedCorrection />
+            </VirtualizingStackPanel>
+        </Grid>
     </Grid>
 </Controls:MetroWindow>

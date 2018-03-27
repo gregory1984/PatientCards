@@ -167,7 +167,7 @@
     <Compile Include="Events\Payloads\JumpToPagePayload.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />
-    <Compile Include="Helpers\UnityNames.cs" />
+    <Compile Include="Helpers\StaticNames.cs" />
     <Compile Include="Helpers\VersionData.cs" />
     <Compile Include="Images\Images.Designer.cs">
       <AutoGen>True</AutoGen>

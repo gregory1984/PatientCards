@@ -13,7 +13,7 @@ namespace Patient_Cards
     {
         protected override DependencyObject CreateShell()
         {
-            Container.RegisterInstance(UnityNames.VersionData, new VersionData(), new ContainerControlledLifetimeManager());
+            Container.RegisterInstance(StaticNames.VersionData, new VersionData(), new ContainerControlledLifetimeManager());
             Container.RegisterType<IDatabaseService, DatabaseService>();
             Container.RegisterType<IDictionariesService, DictionariesService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IDocumentsService, DocumentsService>();
