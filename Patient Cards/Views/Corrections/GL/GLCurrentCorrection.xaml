@@ -104,7 +104,8 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
+                                    TextChanged="TextBox_TextChanged"
+                                    Text="{Binding SphereString, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

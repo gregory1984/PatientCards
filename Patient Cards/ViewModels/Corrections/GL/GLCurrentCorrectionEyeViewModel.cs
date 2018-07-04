@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
+using Patient_Cards.Helpers;
 using Patient_Cards_Model.DTO;
 using Patient_Cards_Model.DTO.GL;
 using Patient_Cards_Model.Interfaces;
@@ -31,12 +32,19 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             set { SetProperty(ref selectedBase, value); }
         }
 
-        private decimal? sphere;
-        public decimal? Sphere
+        private string sphereString = "";
+        public string SphereString
         {
-            get { return sphere; }
-            set { SetProperty(ref sphere, value); }
+            get { return sphereString; }
+            set { SetProperty(ref sphereString, value); }
         }
+
+        //private decimal? sphere;
+        //public decimal? Sphere
+        //{
+        //    get { return sphere; }
+        //    set { SetProperty(ref sphere, value); }
+        //}
 
         private decimal? cylinder;
         public decimal? Cylinder
@@ -64,7 +72,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             get { return prism; }
             set { SetProperty(ref prism, value); }
-        }
+        } 
 
         public GLCurrentCorrectionEyeViewModel(GLCurrentCorrectionDTO dto, IDictionariesService dictionariesService)
         {
@@ -72,7 +80,8 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             EyeId = dto.EyeId;
             EyeName = dto.EyeName;
             CardId = dto.CardId;
-            Sphere = dto.Sphere;
+            //Sphere = dto.Sphere;
+            SphereString = dto.Sphere.ToOpticalString();
             Cylinder = dto.Cylinder;
             Axis = dto.Axis;
             Addition = dto.Addition;
