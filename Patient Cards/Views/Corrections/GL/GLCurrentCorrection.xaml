@@ -99,13 +99,13 @@
                             <DataTemplate>
                                 <TextBox
                                     VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Right"
+                                    HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    TextChanged="TextBox_TextChanged"
-                                    Text="{Binding SphereString, UpdateSourceTrigger=PropertyChanged}" />
+                                    Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}"
+                                    TextChanged="OpticalNumber_TextChanged" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -117,12 +117,13 @@
                             <DataTemplate>
                                 <TextBox
                                     VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Right"
+                                    HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
+                                    Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}"
+                                    TextChanged="OpticalNumber_TextChanged" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -134,11 +135,12 @@
                             <DataTemplate>
                                 <TextBox
                                     VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Right"
+                                    HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
+                                    TextChanged="OpticalAxis_TextChanged"
                                     Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -151,12 +153,13 @@
                             <DataTemplate>
                                 <TextBox
                                     VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Right"
+                                    HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
+                                    Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}"
+                                    TextChanged="OpticalNumber_TextChanged" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -168,12 +171,13 @@
                             <DataTemplate>
                                 <TextBox
                                     VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Right"
+                                    HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    Text="{Binding Prism, UpdateSourceTrigger=PropertyChanged}" />
+                                    Text="{Binding Prism, UpdateSourceTrigger=PropertyChanged}"
+                                    TextChanged="OpticalNumber_TextChanged" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -186,7 +190,7 @@
                                 <ComboBox
                                     Padding="4"
                                     VerticalAlignment="Center"
-                                    HorizontalContentAlignment="Center"
+                                    HorizontalContentAlignment="Left"
                                     BorderBrush="LightGray"
                                     FontFamily="Segoe UI"
                                     FontSize="18"

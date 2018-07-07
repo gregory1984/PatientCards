@@ -21,16 +21,16 @@ namespace Patient_Cards_Tests
         public void ToOpticalNumber_StringZero()
         {
             string obj = "0";
-            Assert.AreEqual(null, obj.ToOpticalNumber());
+            Assert.AreEqual(0, obj.ToOpticalNumber());
 
             obj = "-0";
-            Assert.AreEqual(null, obj.ToOpticalNumber());
+            Assert.AreEqual(0, obj.ToOpticalNumber());
 
             obj = "0,0";
-            Assert.AreEqual(null, obj.ToOpticalNumber());
+            Assert.AreEqual(0, obj.ToOpticalNumber());
 
             obj = "-0,0";
-            Assert.AreEqual(null, obj.ToOpticalNumber());
+            Assert.AreEqual(0, obj.ToOpticalNumber());
         }
 
         [TestMethod]

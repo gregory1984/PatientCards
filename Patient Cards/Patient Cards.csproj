@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\OpticalAxisExtensions.cs" />
+    <Compile Include="Helpers\OpticalNumberExtensions.cs" />
+    <Compile Include="Helpers\OpticalSharpnessExtensions.cs" />
+    <Compile Include="Helpers\OpticalTextBoxValidator.cs" />
     <Compile Include="ViewModels\Dictionaries\ComplaintsViewModel.cs" />
     <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionEyeViewModel.cs" />
     <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionViewModel.cs" />
@@ -165,7 +169,7 @@
     <Compile Include="Events\ExceptionOccuredEvent.cs" />
     <Compile Include="Events\Pagination\JumpToPageEvent.cs" />
     <Compile Include="Events\Payloads\JumpToPagePayload.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\CommonExtensions.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />
     <Compile Include="Helpers\StaticNames.cs" />
     <Compile Include="Helpers\VersionData.cs" />

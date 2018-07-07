@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Patient_Cards.Helpers;
 using Patient_Cards_Model.DTO.GL;
 
 namespace Patient_Cards.ViewModels.Sharpness
@@ -13,22 +14,22 @@ namespace Patient_Cards.ViewModels.Sharpness
         public string EyeName { get; set; }
         public int? CardId { get; set; }
 
-        private decimal? currentCorrection;
-        public decimal? CurrentCorrection
+        private string currentCorrection = "";
+        public string CurrentCorrection
         {
             get { return currentCorrection; }
             set { SetProperty(ref currentCorrection, value); }
         }
 
-        private decimal? sC;
-        public decimal? SC
+        private string sC = "";
+        public string SC
         {
             get { return sC; }
             set { SetProperty(ref sC, value); }
         }
 
-        private decimal? cC;
-        public decimal? CC
+        private string cC = "";
+        public string CC
         {
             get { return cC; }
             set { SetProperty(ref cC, value); }
@@ -39,9 +40,9 @@ namespace Patient_Cards.ViewModels.Sharpness
             EyeId = dto.EyeId;
             EyeName = dto.EyeName;
             CardId = dto.CardId;
-            CurrentCorrection = dto.CurrentCorrection;
-            SC = dto.SC;
-            CC = dto.CC;
+            CurrentCorrection = dto.CurrentCorrection.FromOpticalSharpness();
+            SC = dto.SC.FromOpticalSharpness();
+            CC = dto.CC.FromOpticalSharpness();
         }
     }
 }

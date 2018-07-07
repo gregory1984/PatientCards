@@ -57,12 +57,13 @@
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
-                                HorizontalContentAlignment="Right"
+                                HorizontalContentAlignment="Left"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
                                 FontSize="18"
-                                Text="{Binding CurrentCorrection, UpdateSourceTrigger=PropertyChanged}" />
+                                Text="{Binding CurrentCorrection, UpdateSourceTrigger=PropertyChanged}"
+                                TextChanged="OpticalSharpness_TextChanged" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -74,12 +75,13 @@
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
-                                HorizontalContentAlignment="Right"
+                                HorizontalContentAlignment="Left"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
                                 FontSize="18"
-                                Text="{Binding CC, UpdateSourceTrigger=PropertyChanged}" />
+                                Text="{Binding CC, UpdateSourceTrigger=PropertyChanged}"
+                                TextChanged="OpticalSharpness_TextChanged" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

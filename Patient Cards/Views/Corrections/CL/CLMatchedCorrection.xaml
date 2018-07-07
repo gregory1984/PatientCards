@@ -49,7 +49,7 @@
                         Width="150"
                         Margin="2"
                         VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
+                        HorizontalContentAlignment="Left"
                         FontFamily="Segoe UI"
                         ItemsSource="{Binding ForTestingWearingTypes, UpdateSourceTrigger=PropertyChanged, IsAsync=True}"
                         SelectedItem="{Binding SelectedForTestingWearingType, UpdateSourceTrigger=PropertyChanged}" />
@@ -135,7 +135,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -152,7 +152,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -169,7 +169,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -186,7 +186,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -203,7 +203,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -220,7 +220,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -357,7 +357,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -374,7 +374,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -391,7 +391,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -408,7 +408,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -425,7 +425,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
@@ -442,7 +442,7 @@
                                 <DataTemplate>
                                     <TextBox
                                         VerticalAlignment="Center"
-                                        HorizontalContentAlignment="Right"
+                                        HorizontalContentAlignment="Left"
                                         VerticalContentAlignment="Center"
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"

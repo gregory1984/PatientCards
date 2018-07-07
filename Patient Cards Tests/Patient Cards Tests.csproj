@@ -51,9 +51,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ToOpticalString.cs" />
+    <Compile Include="FromOpticalNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToOpticalNumber.cs" />
+    <Compile Include="FromOpticalAxis.cs" />
+    <Compile Include="ToOpticalAxis.cs" />
+    <Compile Include="ToOpticalSharpness.cs" />
+    <Compile Include="FromOpticalSharpness.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

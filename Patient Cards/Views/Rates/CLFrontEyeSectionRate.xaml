@@ -57,7 +57,7 @@
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
-                                HorizontalContentAlignment="Right"
+                                HorizontalContentAlignment="Left"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"
@@ -75,7 +75,7 @@
                         <DataTemplate>
                             <TextBox
                                 VerticalAlignment="Center"
-                                HorizontalContentAlignment="Right"
+                                HorizontalContentAlignment="Left"
                                 VerticalContentAlignment="Center"
                                 Controls:TextBoxHelper.SelectAllOnFocus="True"
                                 BorderBrush="LightGray"

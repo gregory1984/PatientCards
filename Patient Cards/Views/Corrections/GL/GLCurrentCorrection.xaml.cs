@@ -8,27 +8,23 @@ namespace Patient_Cards.Views.Corrections.GL
 {
     public partial class GLCurrentCorrection : UserControl
     {
+        private OpticalTextBoxValidator opticalTextBoxValidator;
+
         public GLCurrentCorrection()
         {
             InitializeComponent();
 
             var viewmodel = DataContext as GLCurrentCorrectionViewModel;
 
+            opticalTextBoxValidator = new OpticalTextBoxValidator();
+
             Unloaded += (sender, e) => viewmodel.UnsubscribePrismEvents();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textbox = sender as TextBox;
-            var text = textbox.Text;
+        private void OpticalNumber_TextChanged(object sender, TextChangedEventArgs e)
+            => opticalTextBoxValidator.ValidateOpticalNumber(sender as TextBox);
 
-            if (!string.IsNullOrWhiteSpace(text) && !text.IsOpticalNumber())
-            {
-                text = text.Substring(0, text.Length - 1);
-
-                textbox.Text = text;
-                textbox.CaretIndex = text.Length;
-            }
-        }
+        private void OpticalAxis_TextChanged(object sender, TextChangedEventArgs e)
+            => opticalTextBoxValidator.ValidateOpticalAxis(sender as TextBox);
     }
 }

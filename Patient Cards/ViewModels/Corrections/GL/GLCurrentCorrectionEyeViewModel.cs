@@ -32,47 +32,40 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             set { SetProperty(ref selectedBase, value); }
         }
 
-        private string sphereString = "";
-        public string SphereString
+        private string sphere = "";
+        public string Sphere
         {
-            get { return sphereString; }
-            set { SetProperty(ref sphereString, value); }
+            get { return sphere; }
+            set { SetProperty(ref sphere, value); }
         }
 
-        //private decimal? sphere;
-        //public decimal? Sphere
-        //{
-        //    get { return sphere; }
-        //    set { SetProperty(ref sphere, value); }
-        //}
-
-        private decimal? cylinder;
-        public decimal? Cylinder
+        private string cylinder = "";
+        public string Cylinder
         {
             get { return cylinder; }
             set { SetProperty(ref cylinder, value); }
         }
 
-        private int? axis;
-        public int? Axis
+        private string axis = "";
+        public string Axis
         {
             get { return axis; }
             set { SetProperty(ref axis, value); }
         }
 
-        private decimal? addition;
-        public decimal? Addition
+        private string addition = "";
+        public string Addition
         {
             get { return addition; }
             set { SetProperty(ref addition, value); }
         }
 
-        private decimal? prism;
-        public decimal? Prism
+        private string prism = "";
+        public string Prism
         {
             get { return prism; }
             set { SetProperty(ref prism, value); }
-        } 
+        }
 
         public GLCurrentCorrectionEyeViewModel(GLCurrentCorrectionDTO dto, IDictionariesService dictionariesService)
         {
@@ -80,12 +73,11 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             EyeId = dto.EyeId;
             EyeName = dto.EyeName;
             CardId = dto.CardId;
-            //Sphere = dto.Sphere;
-            SphereString = dto.Sphere.ToOpticalString();
-            Cylinder = dto.Cylinder;
-            Axis = dto.Axis;
-            Addition = dto.Addition;
-            Prism = dto.Prism;
+            Sphere = dto.Sphere.FromOpticalNumber();
+            Cylinder = dto.Cylinder.FromOpticalNumber();
+            Axis = dto.Axis.FromOpticalAxis();
+            Addition = dto.Addition.FromOpticalNumber();
+            Prism = dto.Prism.FromOpticalNumber();
 
             Bases = new ObservableCollection<BaseDTO> { new BaseDTO { Id = null, Name = "Wybierz" } };
             foreach (BaseDTO b in dictionariesService.Bases.Values)

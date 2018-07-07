@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Patient_Cards_Model.DTO.CL;
+using Patient_Cards.Helpers;
 
 namespace Patient_Cards.ViewModels.Sharpness
 {
@@ -13,15 +14,15 @@ namespace Patient_Cards.ViewModels.Sharpness
         public string EyeName { get; set; }
         public int? CardId { get; set; }
 
-        private decimal? currentCorrection;
-        public decimal? CurrentCorrection
+        private string currentCorrection = "";
+        public string CurrentCorrection
         {
             get { return currentCorrection; }
             set { SetProperty(ref currentCorrection, value); }
         }
 
-        private decimal? cC;
-        public decimal? CC
+        private string cC = "";
+        public string CC
         {
             get { return cC; }
             set { SetProperty(ref cC, value); }
@@ -32,8 +33,8 @@ namespace Patient_Cards.ViewModels.Sharpness
             EyeId = dto.EyeId;
             EyeName = dto.EyeName;
             CardId = dto.CardId;
-            CurrentCorrection = dto.CurrentCorrection;
-            CC = dto.CC;
+            CurrentCorrection = dto.CurrentCorrection.FromOpticalSharpness();
+            CC = dto.CC.FromOpticalSharpness();
         }
     }
 }
