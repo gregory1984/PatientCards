@@ -13,7 +13,7 @@ namespace Patient_Cards.Helpers
             if (string.IsNullOrWhiteSpace(phrase))
                 return false;
 
-            if (decimal.TryParse(phrase.Replace(',', '.'), out decimal val))
+            if (decimal.TryParse(phrase, out decimal val))
             {
                 return val >= decimal.Zero && val <= 1.5m;
             }
