@@ -25,6 +25,9 @@
             <i:InvokeCommandAction Command="{Binding Loaded}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    <!--
+        Main grid
+    -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -33,18 +36,99 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <VirtualizingStackPanel Grid.Row="0" Grid.Column="0">
-            <main:PersonalData />
-            <dict:Illnesses />
-            <dict:Others />
-            <dict:Medicaments />
-            <dict:Complaints />
-        </VirtualizingStackPanel>
+        <!--
+            Left side
+        -->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!--
+                Left tabs
+            -->
+            <VirtualizingStackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button
+                    Margin="5"
+                    Controls:ButtonHelper.PreserveTextCase="True"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding ShowInterview}"
+                    Content="Wywiad personalny"
+                    FontSize="18"
+                    Foreground="{Binding InterviewTabHeaderBackground, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource SquareButtonStyle}" />
+                <VirtualizingStackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Button
+                        Margin="5"
+                        Controls:ButtonHelper.PreserveTextCase="True"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding ShowSearching}"
+                        Content="Wyszukiwanie - prawodopodobne umiejscowienie (na razie testy)"
+                        FontSize="18"
+                        Foreground="{Binding SearchingTabHeaderBackground, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{DynamicResource SquareButtonStyle}" />
+                </VirtualizingStackPanel>
+            </VirtualizingStackPanel>
+            <!--
+                Interview
+            -->
+            <VirtualizingStackPanel Grid.Row="1" Visibility="{Binding InterviewVisibility, UpdateSourceTrigger=PropertyChanged}">
+                <main:PersonalData />
+                <dict:Illnesses />
+                <dict:Others />
+                <dict:Medicaments />
+                <dict:Complaints />
+            </VirtualizingStackPanel>
+            <!--
+                PERSON TESTING STACK - Searching
+            -->
+            <VirtualizingStackPanel Grid.Row="1" Visibility="{Binding SearchingVisibility, UpdateSourceTrigger=PropertyChanged}">
+                <Button
+                    Margin="2"
+                    Command="{Binding LoadLastSavedTestPerson}"
+                    Content="Wczytaj ostatnio zapisaną osobę" />
+                <Button
+                    Margin="2"
+                    Command="{Binding SaveTestPerson}"
+                    Content="Zapisz osobę testową" />
+                <Button
+                    Margin="2"
+                    Command="{Binding ClearForm}"
+                    Content="Wyczyść formularz" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                        Grid.Column="0"
+                        VerticalContentAlignment="Center"
+                        Controls:TextBoxHelper.ClearTextButton="True"
+                        Controls:TextBoxHelper.SelectAllOnFocus="True"
+                        Controls:TextBoxHelper.Watermark="Nazwisko osoby testowej"
+                        Text="{Binding TestSurname, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="2"
+                        Command="{Binding FindTestPerson}"
+                        Content="Znajdź osobę testową po nazwisku" />
+                </Grid>
+                <Label Content="TODO: tutaj zrobić datagrida z wynikami." />
+            </VirtualizingStackPanel>
+        </Grid>
+        <!--
+            Right side
+        -->
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <!--
+                Right tabs
+            -->
             <VirtualizingStackPanel Orientation="Horizontal">
                 <Button
                     Margin="5"
@@ -67,18 +151,25 @@
                     Foreground="{Binding CLTabHeaderBackground, UpdateSourceTrigger=PropertyChanged}"
                     Style="{DynamicResource SquareButtonStyle}" />
             </VirtualizingStackPanel>
+            <!--
+                GL
+            -->
             <VirtualizingStackPanel Grid.Row="1" Visibility="{Binding GLSetupVisibility, UpdateSourceTrigger=PropertyChanged}">
                 <gl:GLCurrentCorrection />
                 <cl:CLCurrentCorrection />
                 <shar:GLSharpness />
                 <gl:GLMatchedCorrection />
             </VirtualizingStackPanel>
-
-            <VirtualizingStackPanel Grid.Row="1" Visibility="{Binding CLSetupVisibility, UpdateSourceTrigger=PropertyChanged}">
-                <rate:CLFrontEyeSectionRate />
-                <shar:CLSharpness />
-                <cl:CLMatchedCorrection />
-            </VirtualizingStackPanel>
+            <!--
+                CL
+            -->
+            <ScrollViewer Grid.Row="1" Visibility="{Binding CLSetupVisibility, UpdateSourceTrigger=PropertyChanged}">
+                <VirtualizingStackPanel>
+                    <rate:CLFrontEyeSectionRate />
+                    <shar:CLSharpness />
+                    <cl:CLMatchedCorrection />
+                </VirtualizingStackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

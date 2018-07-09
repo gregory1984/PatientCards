@@ -22,8 +22,8 @@
                 Text="OCENA DOPASOWANIA CL" />
         </GroupBox.Header>
         <DataGrid
-            Height="95"
-            MaxHeight="95"
+            Height="197"
+            MaxHeight="197"
             AlternatingRowBackground="White"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"

@@ -16,10 +16,16 @@ namespace Patient_Cards.ViewModels.Main
     public class MainWindowViewModel : ViewModelBase
     {
         #region Enums
-        private enum VisibleSetup
+        private enum VisibleRightTab
         {
             GL,
             CL
+        }
+
+        private enum VisibleLeftTab
+        {
+            Interview,
+            Searching
         }
         #endregion
 
@@ -36,6 +42,34 @@ namespace Patient_Cards.ViewModels.Main
         {
             get { return cLSetupVisibility; }
             set { SetProperty(ref cLSetupVisibility, value); }
+        }
+
+        private Visibility interviewVisibility;
+        public Visibility InterviewVisibility
+        {
+            get { return interviewVisibility; }
+            set { SetProperty(ref interviewVisibility, value); }
+        }
+
+        private Visibility searchingVisibility;
+        public Visibility SearchingVisibility
+        {
+            get { return searchingVisibility; }
+            set { SetProperty(ref searchingVisibility, value); }
+        }
+
+        private string interviewTabHeaderBackground = "";
+        public string InterviewTabHeaderBackground
+        {
+            get { return interviewTabHeaderBackground; }
+            set { SetProperty(ref interviewTabHeaderBackground, value); }
+        }
+
+        private string searchingTabHeaderBackground = "";
+        public string SearchingTabHeaderBackground
+        {
+            get { return searchingTabHeaderBackground; }
+            set { SetProperty(ref searchingTabHeaderBackground, value); }
         }
 
         private string gLTabHeaderBackground = "";
@@ -77,7 +111,8 @@ namespace Patient_Cards.ViewModels.Main
                 eventAggregator.ExecuteSafety(() =>
                 {
                     SubscribeExceptionHandling();
-                    SwitchSetupTab(VisibleSetup.GL);
+                    SwitchLeftSideTab(VisibleLeftTab.Interview);
+                    SwitchRightSideTab(VisibleRightTab.GL);
                     databaseService.Initialize();
                 });
             }));
@@ -86,26 +121,38 @@ namespace Patient_Cards.ViewModels.Main
         private DelegateCommand showGLSetup;
         public DelegateCommand ShowGLSetup
         {
-            get => showGLSetup ?? (showGLSetup = new DelegateCommand(() => SwitchSetupTab(VisibleSetup.GL)));
+            get => showGLSetup ?? (showGLSetup = new DelegateCommand(() => SwitchRightSideTab(VisibleRightTab.GL)));
         }
 
         private DelegateCommand showCLSetup;
         public DelegateCommand ShowCLSetup
         {
-            get => showCLSetup ?? (showCLSetup = new DelegateCommand(() => SwitchSetupTab(VisibleSetup.CL)));
+            get => showCLSetup ?? (showCLSetup = new DelegateCommand(() => SwitchRightSideTab(VisibleRightTab.CL)));
         }
 
-        private void SwitchSetupTab(VisibleSetup setup)
+        private DelegateCommand showInterview;
+        public DelegateCommand ShowInterview
         {
-            switch (setup)
+            get => showInterview ?? (showInterview = new DelegateCommand(() => SwitchLeftSideTab(VisibleLeftTab.Interview)));
+        }
+
+        private DelegateCommand showSearching;
+        public DelegateCommand ShowSearching
+        {
+            get => showSearching ?? (showSearching = new DelegateCommand(() => SwitchLeftSideTab(VisibleLeftTab.Searching)));
+        }
+
+        private void SwitchRightSideTab(VisibleRightTab tab)
+        {
+            switch (tab)
             {
-                case VisibleSetup.GL:
+                case VisibleRightTab.GL:
                     GLSetupVisibility = Visibility.Visible;
                     CLSetupVisibility = Visibility.Collapsed;
                     GLTabHeaderBackground = StaticNames.ActiveTabBackground;
                     CLTabHeaderBackground = StaticNames.InactiveTabBackground;
                     break;
-                case VisibleSetup.CL:
+                case VisibleRightTab.CL:
                     GLSetupVisibility = Visibility.Collapsed;
                     CLSetupVisibility = Visibility.Visible;
                     GLTabHeaderBackground = StaticNames.InactiveTabBackground;
@@ -113,5 +160,82 @@ namespace Patient_Cards.ViewModels.Main
                     break;
             }
         }
+
+        private void SwitchLeftSideTab(VisibleLeftTab tab)
+        {
+            switch (tab)
+            {
+                case VisibleLeftTab.Interview:
+                    InterviewVisibility = Visibility.Visible;
+                    SearchingVisibility = Visibility.Collapsed;
+                    InterviewTabHeaderBackground = StaticNames.ActiveTabBackground;
+                    SearchingTabHeaderBackground = StaticNames.InactiveTabBackground;
+                    break;
+                case VisibleLeftTab.Searching:
+                    InterviewVisibility = Visibility.Collapsed;
+                    SearchingVisibility = Visibility.Visible;
+                    InterviewTabHeaderBackground = StaticNames.InactiveTabBackground;
+                    SearchingTabHeaderBackground = StaticNames.ActiveTabBackground;
+                    break;
+            }
+        }
+
+
+        #region PERSON TESTING
+        private string testSurname = "";
+        public string TestSurname
+        {
+            get { return testSurname; }
+            set { SetProperty(ref testSurname, value); }
+        }
+
+        private DelegateCommand loadLastSavedTestPerson;
+        public DelegateCommand LoadLastSavedTestPerson
+        {
+            get => loadLastSavedTestPerson ?? (loadLastSavedTestPerson = new DelegateCommand(() =>
+            {
+                eventAggregator.ExecuteSafety(() =>
+                {
+
+                });
+            }));
+        }
+
+        private DelegateCommand saveTestPerson;
+        public DelegateCommand SaveTestPerson
+        {
+            get => saveTestPerson ?? (saveTestPerson = new DelegateCommand(() =>
+            {
+                eventAggregator.ExecuteSafety(() =>
+                {
+
+                });
+            }));
+        }
+
+        private DelegateCommand clearForm;
+        public DelegateCommand ClearForm
+        {
+            get => clearForm ?? (clearForm = new DelegateCommand(() =>
+            {
+                eventAggregator.ExecuteSafety(() =>
+                {
+
+                });
+            }));
+        }
+
+        private DelegateCommand findTestPerson;
+        public DelegateCommand FindTestPerson
+        {
+            get => findTestPerson ?? (findTestPerson = new DelegateCommand(() =>
+            {
+                eventAggregator.ExecuteSafety(() =>
+                {
+
+                });
+            }));
+        }
+        #endregion PERSON TESTING
     }
 }

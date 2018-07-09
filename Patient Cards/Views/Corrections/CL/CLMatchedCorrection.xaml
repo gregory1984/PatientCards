@@ -140,7 +140,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -157,7 +158,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -174,7 +176,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalAxis_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -191,7 +194,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -208,7 +212,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -225,7 +230,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding DIA, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding DIA, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -362,7 +368,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -379,7 +386,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -396,7 +404,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalAxis_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -413,7 +422,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -430,7 +440,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding BC, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -447,7 +458,8 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
-                                        Text="{Binding DIA, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding DIA, UpdateSourceTrigger=PropertyChanged}"
+                                        TextChanged="OpticalNumber_TextChanged" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

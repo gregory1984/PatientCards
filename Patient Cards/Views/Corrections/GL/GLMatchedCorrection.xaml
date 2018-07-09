@@ -68,7 +68,7 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    Foreground="Red"
+                                    TextChanged="OpticalNumber_TextChanged"
                                     Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -86,6 +86,7 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
+                                    TextChanged="OpticalNumber_TextChanged"
                                     Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -103,6 +104,7 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
+                                    TextChanged="OpticalAxis_TextChanged"
                                     Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -120,6 +122,7 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
+                                    TextChanged="OpticalNumber_TextChanged"
                                     Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -137,6 +140,7 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
+                                    TextChanged="OpticalNumber_TextChanged"
                                     Text="{Binding Prism, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -255,6 +259,7 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
+                                        TextChanged="OpticalNumber_TextChanged"
                                         Text="{Binding Sphere, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -272,6 +277,7 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
+                                        TextChanged="OpticalNumber_TextChanged"
                                         Text="{Binding Cylinder, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -289,6 +295,7 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
+                                        TextChanged="OpticalAxis_TextChanged"
                                         Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -306,6 +313,7 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
+                                        TextChanged="OpticalNumber_TextChanged"
                                         Text="{Binding Addition, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -323,6 +331,7 @@
                                         Controls:TextBoxHelper.SelectAllOnFocus="True"
                                         BorderBrush="LightGray"
                                         FontSize="18"
+                                        TextChanged="OpticalNumber_TextChanged"
                                         Text="{Binding Prism, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

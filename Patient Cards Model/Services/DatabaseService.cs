@@ -182,7 +182,7 @@ namespace Patient_Cards_Model.Services
             var conditions = new List<CLProfessionCondition>
             {
                 new CLProfessionCondition{ Id = 1, Name = "W klimatyzowanym pomieszczeniu" },
-                new CLProfessionCondition{ Id = 1, Name = "W zapylonym środowisku" },
+                new CLProfessionCondition{ Id = 2, Name = "W zapylonym środowisku" },
             };
 
             foreach (CLProfessionCondition c in conditions)
@@ -312,7 +312,7 @@ namespace Patient_Cards_Model.Services
                 new CLMatchedCorrectionRateIssue { Id = 2, Name = "Ruchomość" },
                 new CLMatchedCorrectionRateIssue { Id = 3, Name = "Pokrycie rogówki" },
                 new CLMatchedCorrectionRateIssue { Id = 4, Name = "Rotacja" },
-                new CLMatchedCorrectionRateIssue { Id = 5, Name = "Konfort" }
+                new CLMatchedCorrectionRateIssue { Id = 5, Name = "Komfort" }
             };
 
             foreach (CLMatchedCorrectionRateIssue i in issues)
