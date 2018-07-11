@@ -48,6 +48,10 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         }
         #endregion
 
+        #region Event tokens
+        private SubscriptionToken personDataRequestEventToken;
+        #endregion
+
         private readonly ICorrectionService correctionService;
 
         public CLCurrentCorrectionViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, ICorrectionService correctionService, IDictionariesService dictionariesService)
@@ -61,8 +65,14 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
+                personDataRequestEventToken = eventAggregator.GetEvent<Events.PersonTest.PersonDataRequestEvent>().Subscribe(OnSubscribePersonDataRequestEvent);
                 SetCorrections();
             }));
+        }
+
+        private void OnSubscribePersonDataRequestEvent()
+        {
+            eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Publish(new Events.Payloads.CLCurrentCorrection.PersonDataPayload(this));
         }
 
         private async void SetCorrections()
@@ -78,6 +88,13 @@ namespace Patient_Cards.ViewModels.Corrections.CL
                 }
             }
             catch (Exception ex) { PropagateException(ex); }
+        }
+
+        public override void UnsubscribePrismEvents()
+        {
+            base.UnsubscribePrismEvents();
+
+            eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataRequestEventToken);
         }
     }
 }

@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Patient_Cards.Helpers;
 using Patient_Cards_Model.DTO.CL;
 
 namespace Patient_Cards.ViewModels.Corrections.CL
@@ -14,43 +15,43 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         public string EyeName { get; set; }
         public int? CardId { get; set; }
 
-        private decimal? sphere;
-        public decimal? Sphere
+        private string sphere;
+        public string Sphere
         {
             get { return sphere; }
             set { SetProperty(ref sphere, value); }
         }
 
-        private decimal? cylinder;
-        public decimal? Cylinder
+        private string cylinder;
+        public string Cylinder
         {
             get { return cylinder; }
             set { SetProperty(ref cylinder, value); }
         }
 
-        private int? axis;
-        public int? Axis
+        private string axis;
+        public string Axis
         {
             get { return axis; }
             set { SetProperty(ref axis, value); }
         }
 
-        private decimal? addition;
-        public decimal? Addition
+        private string addition;
+        public string Addition
         {
             get { return addition; }
             set { SetProperty(ref addition, value); }
         }
 
-        private decimal? bC;
-        public decimal? BC
+        private string bC;
+        public string BC
         {
             get { return bC; }
             set { SetProperty(ref bC, value); }
         }
 
-        private decimal? visus;
-        public decimal? Visus
+        private string visus;
+        public string Visus
         {
             get { return visus; }
             set { SetProperty(ref visus, value); }
@@ -62,12 +63,12 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             EyeId = dto.EyeId;
             EyeName = dto.EyeName;
             CardId = dto.CardId;
-            Sphere = dto.Sphere;
-            Cylinder = dto.Cylinder;
-            Axis = dto.Axis;
-            Addition = dto.Addition;
-            BC = dto.BC;
-            Visus = dto.Visus;
+            Sphere = dto.Sphere.FromOpticalNumber();
+            Cylinder = dto.Cylinder.FromOpticalNumber();
+            Axis = dto.Axis.FromOpticalAxis();
+            Addition = dto.Addition.FromOpticalNumber();
+            BC = dto.BC.FromOpticalNumber();
+            Visus = dto.Visus.FromOpticalNumber();
         }
     }
 }

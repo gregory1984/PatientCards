@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using Patient_Cards.Helpers;
 using Patient_Cards.ViewModels.Base;
 using Patient_Cards.ViewModels.Corrections;
+using Patient_Cards.Events.PersonTest;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO.GL;
 
@@ -48,6 +49,10 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         }
         #endregion
 
+        #region Event tokens
+        private SubscriptionToken personDataRequestEventToken;
+        #endregion
+
         private readonly ICorrectionService correctionService;
 
         public GLCurrentCorrectionViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, ICorrectionService correctionService, IDictionariesService dictionariesService)
@@ -61,8 +66,14 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
+                personDataRequestEventToken = eventAggregator.GetEvent<PersonDataRequestEvent>().Subscribe(OnSubscribePersonDataRequestEvent);
                 SetCorrections();
             }));
+        }
+
+        private void OnSubscribePersonDataRequestEvent()
+        {
+            eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Publish(new Events.Payloads.GLCurrentCorrection.PersonDataPayload(this));
         }
 
         private async void SetCorrections()
@@ -74,6 +85,13 @@ namespace Patient_Cards.ViewModels.Corrections.GL
             {
                 Corrections.Add(new GLCurrentCorrectionEyeViewModel(c, dictionariesService));
             }
+        }
+
+        public override void UnsubscribePrismEvents()
+        {
+            base.UnsubscribePrismEvents();
+
+            eventAggregator.GetEvent<PersonDataRequestEvent>().Unsubscribe(personDataRequestEventToken);
         }
     }
 }

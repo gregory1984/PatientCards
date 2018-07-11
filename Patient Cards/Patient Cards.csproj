@@ -59,6 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Events\CLCurrentCorrection\PersonDataResponseEvent.cs" />
+    <Compile Include="Events\GLCurrentCorrection\PersonDataResponseEvent.cs" />
+    <Compile Include="Events\Payloads\CLCurrentCorrection\PersonDataPayload.cs" />
+    <Compile Include="Events\Payloads\GLCurrentCorrection\PersonDataPayload.cs" />
+    <Compile Include="Events\PersonTest\PersonDataRequestEvent.cs" />
     <Compile Include="Helpers\OpticalAxisExtensions.cs" />
     <Compile Include="Helpers\OpticalNumberExtensions.cs" />
     <Compile Include="Helpers\OpticalSharpnessExtensions.cs" />

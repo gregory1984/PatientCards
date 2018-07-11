@@ -10,6 +10,7 @@ using Prism.Commands;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards.Helpers;
 using Patient_Cards.ViewModels.Base;
+using Patient_Cards.Events.PersonTest;
 
 namespace Patient_Cards.ViewModels.Main
 {
@@ -92,7 +93,13 @@ namespace Patient_Cards.ViewModels.Main
         #endregion
 
         #region Event tokens
+        private SubscriptionToken personDataResponseEventToken_GLCurrentCorrection;
+        private SubscriptionToken personDataResponseEventToken_CLCurrentCorrection;
+        #endregion
 
+        #region Payloads
+        private Events.Payloads.GLCurrentCorrection.PersonDataPayload payload_GLCurrentCorrection;
+        private Events.Payloads.CLCurrentCorrection.PersonDataPayload payload_CLCurrentCorrection;
         #endregion
 
         private readonly IDatabaseService databaseService;
@@ -108,6 +115,9 @@ namespace Patient_Cards.ViewModels.Main
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
+                personDataResponseEventToken_GLCurrentCorrection = eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Subscribe(OnSubscribePersonDataResponseEvent);
+                personDataResponseEventToken_CLCurrentCorrection = eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Subscribe(OnSubscribePersonDataResponseEvent);
+
                 eventAggregator.ExecuteSafety(() =>
                 {
                     SubscribeExceptionHandling();
@@ -116,18 +126,6 @@ namespace Patient_Cards.ViewModels.Main
                     databaseService.Initialize();
                 });
             }));
-        }
-
-        private DelegateCommand showGLSetup;
-        public DelegateCommand ShowGLSetup
-        {
-            get => showGLSetup ?? (showGLSetup = new DelegateCommand(() => SwitchRightSideTab(VisibleRightTab.GL)));
-        }
-
-        private DelegateCommand showCLSetup;
-        public DelegateCommand ShowCLSetup
-        {
-            get => showCLSetup ?? (showCLSetup = new DelegateCommand(() => SwitchRightSideTab(VisibleRightTab.CL)));
         }
 
         private DelegateCommand showInterview;
@@ -142,23 +140,16 @@ namespace Patient_Cards.ViewModels.Main
             get => showSearching ?? (showSearching = new DelegateCommand(() => SwitchLeftSideTab(VisibleLeftTab.Searching)));
         }
 
-        private void SwitchRightSideTab(VisibleRightTab tab)
+        private DelegateCommand showGLSetup;
+        public DelegateCommand ShowGLSetup
         {
-            switch (tab)
-            {
-                case VisibleRightTab.GL:
-                    GLSetupVisibility = Visibility.Visible;
-                    CLSetupVisibility = Visibility.Collapsed;
-                    GLTabHeaderBackground = StaticNames.ActiveTabBackground;
-                    CLTabHeaderBackground = StaticNames.InactiveTabBackground;
-                    break;
-                case VisibleRightTab.CL:
-                    GLSetupVisibility = Visibility.Collapsed;
-                    CLSetupVisibility = Visibility.Visible;
-                    GLTabHeaderBackground = StaticNames.InactiveTabBackground;
-                    CLTabHeaderBackground = StaticNames.ActiveTabBackground;
-                    break;
-            }
+            get => showGLSetup ?? (showGLSetup = new DelegateCommand(() => SwitchRightSideTab(VisibleRightTab.GL)));
+        }
+
+        private DelegateCommand showCLSetup;
+        public DelegateCommand ShowCLSetup
+        {
+            get => showCLSetup ?? (showCLSetup = new DelegateCommand(() => SwitchRightSideTab(VisibleRightTab.CL)));
         }
 
         private void SwitchLeftSideTab(VisibleLeftTab tab)
@@ -176,6 +167,25 @@ namespace Patient_Cards.ViewModels.Main
                     SearchingVisibility = Visibility.Visible;
                     InterviewTabHeaderBackground = StaticNames.InactiveTabBackground;
                     SearchingTabHeaderBackground = StaticNames.ActiveTabBackground;
+                    break;
+            }
+        }
+
+        private void SwitchRightSideTab(VisibleRightTab tab)
+        {
+            switch (tab)
+            {
+                case VisibleRightTab.GL:
+                    GLSetupVisibility = Visibility.Visible;
+                    CLSetupVisibility = Visibility.Collapsed;
+                    GLTabHeaderBackground = StaticNames.ActiveTabBackground;
+                    CLTabHeaderBackground = StaticNames.InactiveTabBackground;
+                    break;
+                case VisibleRightTab.CL:
+                    GLSetupVisibility = Visibility.Collapsed;
+                    CLSetupVisibility = Visibility.Visible;
+                    GLTabHeaderBackground = StaticNames.InactiveTabBackground;
+                    CLTabHeaderBackground = StaticNames.ActiveTabBackground;
                     break;
             }
         }
@@ -204,13 +214,7 @@ namespace Patient_Cards.ViewModels.Main
         private DelegateCommand saveTestPerson;
         public DelegateCommand SaveTestPerson
         {
-            get => saveTestPerson ?? (saveTestPerson = new DelegateCommand(() =>
-            {
-                eventAggregator.ExecuteSafety(() =>
-                {
-
-                });
-            }));
+            get => saveTestPerson ?? (saveTestPerson = new DelegateCommand(() => eventAggregator.GetEvent<PersonDataRequestEvent>().Publish()));
         }
 
         private DelegateCommand clearForm;
@@ -235,6 +239,52 @@ namespace Patient_Cards.ViewModels.Main
 
                 });
             }));
+        }
+
+        private void OnSubscribePersonDataResponseEvent(Events.Payloads.GLCurrentCorrection.PersonDataPayload payload)
+        {
+            payload_GLCurrentCorrection = payload;
+
+            TrySave();
+        }
+
+        private void OnSubscribePersonDataResponseEvent(Events.Payloads.CLCurrentCorrection.PersonDataPayload payload)
+        {
+            payload_CLCurrentCorrection = payload;
+
+            TrySave();
+        }
+
+        private void TrySave()
+        {
+            if (IsGathered())
+            {
+                //  TODO:
+                // 1. save to the database...
+
+                ClearPayloads();
+            }
+        }
+
+        private bool IsGathered()
+        {
+            return
+                payload_GLCurrentCorrection != null &&
+                payload_CLCurrentCorrection != null;
+        }
+
+        private void ClearPayloads()
+        {
+            payload_GLCurrentCorrection = null;
+            payload_CLCurrentCorrection = null;
+        }
+
+        public override void UnsubscribePrismEvents()
+        {
+            base.UnsubscribePrismEvents();
+
+            eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_GLCurrentCorrection);
+            eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_CLCurrentCorrection);
         }
         #endregion PERSON TESTING
     }
