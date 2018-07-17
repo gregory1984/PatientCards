@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Patient_Cards.ViewModels.Corrections.CL;
 using Prism.Events;
 
-namespace Patient_Cards.Events.CLCurrentCorrection
+namespace Patient_Cards.Events.CLMatchedCorrection
 {
-    public class PersonDataResponseEvent : PubSubEvent<CLCurrentCorrectionViewModel>
+    public class PersonDataResponseEvent : PubSubEvent<CLMatchedCorrectionViewModel>
     {
     }
 }

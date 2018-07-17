@@ -60,14 +60,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Events\CLCurrentCorrection\PersonDataResponseEvent.cs" />
+    <Compile Include="Events\CLMatchedCorrection\PersonDataResponseEvent.cs" />
     <Compile Include="Events\GLCurrentCorrection\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Payloads\CLCurrentCorrection\PersonDataPayload.cs" />
-    <Compile Include="Events\Payloads\GLCurrentCorrection\PersonDataPayload.cs" />
+    <Compile Include="Events\GLMatchedCorrection\PersonDataResponseEvent.cs" />
+    <Compile Include="Events\PersonalData\PersonDataResponseEvent.cs" />
+    <Compile Include="Events\PersonTest\ClearFormEvent.cs" />
     <Compile Include="Events\PersonTest\PersonDataRequestEvent.cs" />
     <Compile Include="Helpers\OpticalAxisExtensions.cs" />
     <Compile Include="Helpers\OpticalNumberExtensions.cs" />
     <Compile Include="Helpers\OpticalSharpnessExtensions.cs" />
-    <Compile Include="Helpers\OpticalTextBoxValidator.cs" />
+    <Compile Include="Helpers\TextBoxValidator.cs" />
+    <Compile Include="Helpers\PatientCardCompletionGuard.cs" />
     <Compile Include="ViewModels\Dictionaries\ComplaintsViewModel.cs" />
     <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionEyeViewModel.cs" />
     <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionViewModel.cs" />

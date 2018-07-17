@@ -13,6 +13,7 @@ using Patient_Cards.ViewModels.Base;
 using Patient_Cards.ViewModels.Corrections;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO.GL;
+using Patient_Cards.Events.PersonTest;
 
 namespace Patient_Cards.ViewModels.Corrections.GL
 {
@@ -69,6 +70,11 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         }
         #endregion
 
+        #region Event tokens;
+        private SubscriptionToken clearFormEventToken;
+        private SubscriptionToken personDataRequestEventToken;
+        #endregion
+
         private readonly ICorrectionService correctionService;
 
         public GLMatchedCorrectionViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, ICorrectionService correctionService, IDictionariesService dictionariesService)
@@ -82,6 +88,14 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
+                clearFormEventToken = eventAggregator
+                    .GetEvent<ClearFormEvent>()
+                    .Subscribe(OnSubscribeClearFormEvent);
+
+                personDataRequestEventToken = eventAggregator
+                    .GetEvent<PersonDataRequestEvent>()
+                    .Subscribe(OnSubscribePersonDataRequestEvent);
+
                 SetCorrections(GLCorrectionType.FromPhoropter);
                 SetCorrections(GLCorrectionType.FinallyMatched);
 
@@ -121,6 +135,27 @@ namespace Patient_Cards.ViewModels.Corrections.GL
                 FinallyCorrectionTypes.Add(t);
             }
             SelectedFinallyCorrectionType = FinallyCorrectionTypes.First();
+        }
+
+        private void OnSubscribeClearFormEvent()
+        {
+            SetCorrections(GLCorrectionType.FromPhoropter);
+            SetCorrections(GLCorrectionType.FinallyMatched);
+
+            SelectedFinallyCorrectionType = FinallyCorrectionTypes.First();
+
+            FinallyCorrectionTypeOptional = "";
+        }
+
+        private void OnSubscribePersonDataRequestEvent()
+            => eventAggregator.GetEvent<Events.GLMatchedCorrection.PersonDataResponseEvent>().Publish(this);
+
+        public override void UnsubscribePrismEvents()
+        {
+            base.UnsubscribePrismEvents();
+
+            eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
+            eventAggregator.GetEvent<PersonDataRequestEvent>().Unsubscribe(personDataRequestEventToken);
         }
     }
 }

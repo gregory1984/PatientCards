@@ -8,8 +8,18 @@ using System.Windows.Media;
 
 namespace Patient_Cards.Helpers
 {
-    public class OpticalTextBoxValidator
+    public class TextBoxValidator
     {
+        public void ValidateAge(TextBox textbox)
+        {
+            var text = textbox.Text;
+
+            if (!string.IsNullOrWhiteSpace(text) && !text.IsPositiveInteger())
+            {
+                ProcessTextBox(textbox);
+            }
+        }
+
         public void ValidateOpticalNumber(TextBox textbox)
         {
             var text = textbox.Text;

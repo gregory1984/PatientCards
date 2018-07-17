@@ -12,6 +12,7 @@ using Patient_Cards.Helpers;
 using Patient_Cards.ViewModels.Base;
 using Patient_Cards.Events.PersonTest;
 
+
 namespace Patient_Cards.ViewModels.Main
 {
     public class MainWindowViewModel : ViewModelBase
@@ -93,21 +94,22 @@ namespace Patient_Cards.ViewModels.Main
         #endregion
 
         #region Event tokens
+        private SubscriptionToken personDataResponseEventToken_PersonData;
         private SubscriptionToken personDataResponseEventToken_GLCurrentCorrection;
+        private SubscriptionToken personDataResponseEventToken_GLMatchedCorrection;
         private SubscriptionToken personDataResponseEventToken_CLCurrentCorrection;
-        #endregion
-
-        #region Payloads
-        private Events.Payloads.GLCurrentCorrection.PersonDataPayload payload_GLCurrentCorrection;
-        private Events.Payloads.CLCurrentCorrection.PersonDataPayload payload_CLCurrentCorrection;
+        private SubscriptionToken personDataResponseEventToken_CLMatchedCorrection;
         #endregion
 
         private readonly IDatabaseService databaseService;
+        private PatientCardCompletionGuard completionGuard;
 
         public MainWindowViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, IDatabaseService databaseService, IDictionariesService dictionariesService)
             : base(eventAggregator, unityContainer, dictionariesService)
         {
             this.databaseService = databaseService;
+            this.completionGuard = new PatientCardCompletionGuard();
+            this.completionGuard.SaveReadyEvent += SaveCard;
         }
 
         private DelegateCommand loaded;
@@ -115,8 +117,25 @@ namespace Patient_Cards.ViewModels.Main
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                personDataResponseEventToken_GLCurrentCorrection = eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Subscribe(OnSubscribePersonDataResponseEvent);
-                personDataResponseEventToken_CLCurrentCorrection = eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Subscribe(OnSubscribePersonDataResponseEvent);
+                personDataResponseEventToken_PersonData = eventAggregator
+                    .GetEvent<Events.PersonalData.PersonDataResponseEvent>()
+                    .Subscribe(vm => completionGuard.PersonData = vm);
+
+                personDataResponseEventToken_GLCurrentCorrection = eventAggregator
+                    .GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>()
+                    .Subscribe(vm => completionGuard.GLCurrentCorrection = vm);
+
+                personDataResponseEventToken_GLMatchedCorrection = eventAggregator
+                    .GetEvent<Events.GLMatchedCorrection.PersonDataResponseEvent>()
+                    .Subscribe(vm => completionGuard.GLMatchedCorrection = vm);
+
+                personDataResponseEventToken_CLCurrentCorrection = eventAggregator
+                    .GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>()
+                    .Subscribe(vm => completionGuard.CLCurrentCorrection = vm);
+
+                personDataResponseEventToken_CLMatchedCorrection = eventAggregator
+                    .GetEvent<Events.CLMatchedCorrection.PersonDataResponseEvent>()
+                    .Subscribe(vm => completionGuard.CLMatchedCorrection = vm);
 
                 eventAggregator.ExecuteSafety(() =>
                 {
@@ -241,50 +260,24 @@ namespace Patient_Cards.ViewModels.Main
             }));
         }
 
-        private void OnSubscribePersonDataResponseEvent(Events.Payloads.GLCurrentCorrection.PersonDataPayload payload)
+        private void SaveCard()
         {
-            payload_GLCurrentCorrection = payload;
+            //  TODO:
+            // 1. save to the database...
 
-            TrySave();
-        }
-
-        private void OnSubscribePersonDataResponseEvent(Events.Payloads.CLCurrentCorrection.PersonDataPayload payload)
-        {
-            payload_CLCurrentCorrection = payload;
-
-            TrySave();
-        }
-
-        private void TrySave()
-        {
-            if (IsGathered())
-            {
-                //  TODO:
-                // 1. save to the database...
-
-                ClearPayloads();
-            }
-        }
-
-        private bool IsGathered()
-        {
-            return
-                payload_GLCurrentCorrection != null &&
-                payload_CLCurrentCorrection != null;
-        }
-
-        private void ClearPayloads()
-        {
-            payload_GLCurrentCorrection = null;
-            payload_CLCurrentCorrection = null;
+            completionGuard.Clear();
+            eventAggregator.GetEvent<ClearFormEvent>().Publish();
         }
 
         public override void UnsubscribePrismEvents()
         {
             base.UnsubscribePrismEvents();
 
+            eventAggregator.GetEvent<Events.PersonalData.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_PersonData);
             eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_GLCurrentCorrection);
+            eventAggregator.GetEvent<Events.GLMatchedCorrection.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_GLMatchedCorrection);
             eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_CLCurrentCorrection);
+            eventAggregator.GetEvent<Events.CLMatchedCorrection.PersonDataResponseEvent>().Unsubscribe(personDataResponseEventToken_CLMatchedCorrection);
         }
         #endregion PERSON TESTING
     }

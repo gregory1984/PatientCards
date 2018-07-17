@@ -35,5 +35,10 @@ namespace Patient_Cards.Helpers
             }
             return default(T);
         }
+
+        public static bool IsPositiveInteger(this string phrase)
+        {
+            return Regex.IsMatch(phrase, @"^[0-9]*$");
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Patient_Cards.Views.Corrections.GL
 {
     public partial class GLCurrentCorrection : UserControl
     {
-        private OpticalTextBoxValidator opticalTextBoxValidator;
+        private TextBoxValidator textBoxValidator;
 
         public GLCurrentCorrection()
         {
@@ -16,15 +16,15 @@ namespace Patient_Cards.Views.Corrections.GL
 
             var viewmodel = DataContext as GLCurrentCorrectionViewModel;
 
-            opticalTextBoxValidator = new OpticalTextBoxValidator();
+            textBoxValidator = new TextBoxValidator();
 
             Unloaded += (sender, e) => viewmodel.UnsubscribePrismEvents();
         }
 
         private void OpticalNumber_TextChanged(object sender, TextChangedEventArgs e)
-            => opticalTextBoxValidator.ValidateOpticalNumber(sender as TextBox);
+            => textBoxValidator.ValidateOpticalNumber(sender as TextBox);
 
         private void OpticalAxis_TextChanged(object sender, TextChangedEventArgs e)
-            => opticalTextBoxValidator.ValidateOpticalAxis(sender as TextBox);
+            => textBoxValidator.ValidateOpticalAxis(sender as TextBox);
     }
 }

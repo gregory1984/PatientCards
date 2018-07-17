@@ -143,6 +143,7 @@
                     Controls:TextBoxHelper.ClearTextButton="True"
                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                     MaxLength="1000"
+                    TextChanged="Age_TextChanged"
                     Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <Grid>

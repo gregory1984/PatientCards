@@ -50,6 +50,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         #endregion
 
         #region Event tokens
+        private SubscriptionToken clearFormEventToken;
         private SubscriptionToken personDataRequestEventToken;
         #endregion
 
@@ -66,15 +67,27 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                personDataRequestEventToken = eventAggregator.GetEvent<PersonDataRequestEvent>().Subscribe(OnSubscribePersonDataRequestEvent);
+                clearFormEventToken = eventAggregator
+                    .GetEvent<ClearFormEvent>()
+                    .Subscribe(OnSubscribeClearFormEvent);
+
+                personDataRequestEventToken = eventAggregator
+                    .GetEvent<PersonDataRequestEvent>()
+                    .Subscribe(OnSubscribePersonDataRequestEvent);
+
                 SetCorrections();
             }));
         }
 
-        private void OnSubscribePersonDataRequestEvent()
+        private void OnSubscribeClearFormEvent()
         {
-            eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Publish(new Events.Payloads.GLCurrentCorrection.PersonDataPayload(this));
+            SetCorrections();
+
+            FromWhen = CurrentGLType = "";
         }
+
+        private void OnSubscribePersonDataRequestEvent()
+            => eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Publish(this);
 
         private async void SetCorrections()
         {
@@ -91,6 +104,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         {
             base.UnsubscribePrismEvents();
 
+            eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
             eventAggregator.GetEvent<PersonDataRequestEvent>().Unsubscribe(personDataRequestEventToken);
         }
     }

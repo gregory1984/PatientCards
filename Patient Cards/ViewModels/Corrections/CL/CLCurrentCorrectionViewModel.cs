@@ -13,6 +13,7 @@ using Patient_Cards.ViewModels.Base;
 using Patient_Cards.ViewModels.Corrections;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO.CL;
+using Patient_Cards.Events.PersonTest;
 
 namespace Patient_Cards.ViewModels.Corrections.CL
 {
@@ -49,6 +50,7 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         #endregion
 
         #region Event tokens
+        private SubscriptionToken clearFormEventToken;
         private SubscriptionToken personDataRequestEventToken;
         #endregion
 
@@ -65,15 +67,28 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                personDataRequestEventToken = eventAggregator.GetEvent<Events.PersonTest.PersonDataRequestEvent>().Subscribe(OnSubscribePersonDataRequestEvent);
+                clearFormEventToken = eventAggregator
+                    .GetEvent<ClearFormEvent>()
+                    .Subscribe(OnSubscribeClearFormEvent);
+
+                personDataRequestEventToken = eventAggregator
+                    .GetEvent<PersonDataRequestEvent>()
+                    .Subscribe(OnSubscribePersonDataRequestEvent);
+
                 SetCorrections();
             }));
         }
 
-        private void OnSubscribePersonDataRequestEvent()
+        private void OnSubscribeClearFormEvent()
         {
-            eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Publish(new Events.Payloads.CLCurrentCorrection.PersonDataPayload(this));
+            SetCorrections();
+
+            FromWhen = "";
+            VisusBothEyes = null;
         }
+
+        private void OnSubscribePersonDataRequestEvent()
+            => eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Publish(this);
 
         private async void SetCorrections()
         {
@@ -94,6 +109,7 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         {
             base.UnsubscribePrismEvents();
 
+            eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
             eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataRequestEventToken);
         }
     }

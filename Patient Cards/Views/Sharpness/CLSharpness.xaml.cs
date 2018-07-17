@@ -9,7 +9,7 @@ namespace Patient_Cards.Views.Sharpness
     /// </summary>
     public partial class CLSharpness : UserControl
     {
-        private OpticalTextBoxValidator opticalTextBoxValidator;
+        private TextBoxValidator textBoxValidator;
 
         public CLSharpness()
         {
@@ -17,12 +17,12 @@ namespace Patient_Cards.Views.Sharpness
 
             var viewmodel = DataContext as CLSharpnessViewModel;
 
-            opticalTextBoxValidator = new OpticalTextBoxValidator();
+            textBoxValidator = new TextBoxValidator();
 
             Unloaded += (sender, e) => viewmodel.UnsubscribePrismEvents();
         }
 
         private void OpticalSharpness_TextChanged(object sender, TextChangedEventArgs e)
-            => opticalTextBoxValidator.ValidateOpticalSharpness(sender as TextBox);
+            => textBoxValidator.ValidateOpticalSharpness(sender as TextBox);
     }
 }

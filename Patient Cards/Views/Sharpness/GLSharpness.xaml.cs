@@ -7,7 +7,7 @@ namespace Patient_Cards.Views.Sharpness
 {
     public partial class GLSharpness : UserControl
     {
-        private OpticalTextBoxValidator opticalTextBoxValidator;
+        private TextBoxValidator textBoxValidator;
 
         public GLSharpness()
         {
@@ -15,12 +15,12 @@ namespace Patient_Cards.Views.Sharpness
 
             var viewmodel = DataContext as GLSharpnessViewModel;
 
-            opticalTextBoxValidator = new OpticalTextBoxValidator();
+            textBoxValidator = new TextBoxValidator();
 
             Unloaded += (sender, e) => viewmodel.UnsubscribePrismEvents();
         }
 
         private void OpticalSharpness_TextChanged(object sender, TextChangedEventArgs e)
-            => opticalTextBoxValidator.ValidateOpticalSharpness(sender as TextBox);
+            => textBoxValidator.ValidateOpticalSharpness(sender as TextBox);
     }
 }
