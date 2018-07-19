@@ -13,6 +13,7 @@ using Patient_Cards.ViewModels.Base;
 using Patient_Cards.ViewModels.Corrections;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO;
+using Patient_Cards.Events.PersonTest;
 
 namespace Patient_Cards.ViewModels.Dictionaries
 {
@@ -46,6 +47,11 @@ namespace Patient_Cards.ViewModels.Dictionaries
         }
         #endregion
 
+        #region Event tokens
+        private SubscriptionToken clearFormEventToken;
+        private SubscriptionToken personDataRequestEventToken;
+        #endregion
+
         public OthersViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, IDictionariesService dictionariesService)
             : base(eventAggregator, unityContainer, dictionariesService)
         {
@@ -57,6 +63,14 @@ namespace Patient_Cards.ViewModels.Dictionaries
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
+                clearFormEventToken = eventAggregator
+                    .GetEvent<ClearFormEvent>()
+                    .Subscribe(OnSubscribeClearFormEvent);
+
+                personDataRequestEventToken = eventAggregator
+                    .GetEvent<PersonDataRequestEvent>()
+                    .Subscribe(OnSubscribePersonDataRequestEvent);
+
                 SetOthers();
             }));
         }
@@ -71,6 +85,28 @@ namespace Patient_Cards.ViewModels.Dictionaries
                 Others.Add(new DictionaryViewModel(c.Id.Value, c.Name));
             }
             SelectedOther = null;
+        }
+
+        private void OnSubscribePersonDataRequestEvent()
+            => eventAggregator.GetEvent<Events.Dictionaries.Others.PersonDataResponseEvent>().Publish(this);
+
+        private void OnSubscribeClearFormEvent()
+        {
+            OthersOptional = "";
+            SelectedOther = null;
+
+            foreach (DictionaryViewModel o in Others)
+            {
+                o.IsChecked = false;
+            }
+        }
+
+        public override void UnsubscribePrismEvents()
+        {
+            base.UnsubscribePrismEvents();
+
+            eventAggregator.GetEvent<PersonDataRequestEvent>().Unsubscribe(personDataRequestEventToken);
+            eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         }
 
         private void OnSubscribePersonDataRequestEvent()
-            => eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Publish(this);
+            => eventAggregator.GetEvent<Events.Corrections.CL.CLCurrentCorrection.PersonDataResponseEvent>().Publish(this);
 
         private async void SetCorrections()
         {
@@ -110,7 +110,7 @@ namespace Patient_Cards.ViewModels.Corrections.CL
             base.UnsubscribePrismEvents();
 
             eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
-            eventAggregator.GetEvent<Events.CLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataRequestEventToken);
+            eventAggregator.GetEvent<Events.Corrections.CL.CLCurrentCorrection.PersonDataResponseEvent>().Unsubscribe(personDataRequestEventToken);
         }
     }
 }

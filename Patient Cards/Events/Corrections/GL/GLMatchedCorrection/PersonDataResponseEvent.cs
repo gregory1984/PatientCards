@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Patient_Cards.ViewModels.Corrections.GL;
 using Prism.Events;
 
-namespace Patient_Cards.Events.GLMatchedCorrection
+namespace Patient_Cards.Events.Corrections.GL.GLMatchedCorrection
 {
     public class PersonDataResponseEvent : PubSubEvent<GLMatchedCorrectionViewModel>
     {

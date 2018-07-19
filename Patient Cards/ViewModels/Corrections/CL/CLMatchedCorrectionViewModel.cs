@@ -208,7 +208,7 @@ namespace Patient_Cards.ViewModels.Corrections.CL
         }
 
         private void OnSubscribePersonDataRequestEvent()
-            => eventAggregator.GetEvent<Events.CLMatchedCorrection.PersonDataResponseEvent>().Publish(this);
+            => eventAggregator.GetEvent<Events.Corrections.CL.CLMatchedCorrection.PersonDataResponseEvent>().Publish(this);
 
         public override void UnsubscribePrismEvents()
         {

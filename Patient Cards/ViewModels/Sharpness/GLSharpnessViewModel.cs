@@ -12,6 +12,7 @@ using Patient_Cards.Helpers;
 using Patient_Cards.ViewModels.Base;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO.GL;
+using Patient_Cards.Events.PersonTest;
 
 namespace Patient_Cards.ViewModels.Sharpness
 {
@@ -33,6 +34,11 @@ namespace Patient_Cards.ViewModels.Sharpness
         }
         #endregion
 
+        #region Event tokens
+        private SubscriptionToken clearFormEventToken;
+        private SubscriptionToken personDataRequestEventToken;
+        #endregion
+
         private readonly ISharpnessService sharpnessService;
 
         public GLSharpnessViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer,
@@ -47,6 +53,14 @@ namespace Patient_Cards.ViewModels.Sharpness
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
+                clearFormEventToken = eventAggregator
+                    .GetEvent<ClearFormEvent>()
+                    .Subscribe(OnSubscribeClearFormEvent);
+
+                personDataRequestEventToken = eventAggregator
+                    .GetEvent<PersonDataRequestEvent>()
+                    .Subscribe(OnSubscribePersonDataRequestEvent);
+
                 SetSharpnesses();
             }));
         }
@@ -62,6 +76,20 @@ namespace Patient_Cards.ViewModels.Sharpness
             {
                 Sharpnesses.Add(new GLSharpnessEyeViewModel(s));
             }
+        }
+
+        private void OnSubscribePersonDataRequestEvent()
+            => eventAggregator.GetEvent<Events.Sharpness.GLSharpness.PersonDataResponseEvent>().Publish(this);
+
+        private void OnSubscribeClearFormEvent()
+            => SetSharpnesses();
+
+        public override void UnsubscribePrismEvents()
+        {
+            base.UnsubscribePrismEvents();
+
+            eventAggregator.GetEvent<PersonDataRequestEvent>().Unsubscribe(personDataRequestEventToken);
+            eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
         }
     }
 }

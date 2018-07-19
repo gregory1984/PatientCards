@@ -87,7 +87,7 @@ namespace Patient_Cards.ViewModels.Corrections.GL
         }
 
         private void OnSubscribePersonDataRequestEvent()
-            => eventAggregator.GetEvent<Events.GLCurrentCorrection.PersonDataResponseEvent>().Publish(this);
+            => eventAggregator.GetEvent<Events.Corrections.GL.GLCurrentCorrection.PersonDataResponseEvent>().Publish(this);
 
         private async void SetCorrections()
         {

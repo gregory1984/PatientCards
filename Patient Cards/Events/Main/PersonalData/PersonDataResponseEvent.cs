@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Patient_Cards.ViewModels.Main;
 using Prism.Events;
 
-namespace Patient_Cards.Events.PersonalData
+namespace Patient_Cards.Events.Main.PersonalData
 {
     public class PersonDataResponseEvent : PubSubEvent<PersonalDataViewModel>
     {

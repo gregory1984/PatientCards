@@ -7,7 +7,7 @@ using Patient_Cards.Events.Payloads;
 using Patient_Cards.ViewModels.Corrections.GL;
 using Prism.Events;
 
-namespace Patient_Cards.Events.GLCurrentCorrection
+namespace Patient_Cards.Events.Corrections.GL.GLCurrentCorrection
 {
     public class PersonDataResponseEvent : PubSubEvent<GLCurrentCorrectionViewModel>
     {

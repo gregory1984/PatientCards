@@ -233,7 +233,7 @@ namespace Patient_Cards.ViewModels.Main
         }
 
         private void OnSubscribePersonDataRequestEvent()
-            => eventAggregator.GetEvent<Events.PersonalData.PersonDataResponseEvent>().Publish(this);
+            => eventAggregator.GetEvent<Events.Main.PersonalData.PersonDataResponseEvent>().Publish(this);
 
         public override void UnsubscribePrismEvents()
         {
