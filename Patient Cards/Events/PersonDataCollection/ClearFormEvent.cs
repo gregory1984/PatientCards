@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Prism.Events;
 
-namespace Patient_Cards.Events.PersonTest
+namespace Patient_Cards.Events.PersonDataCollection
 {
     public class ClearFormEvent : PubSubEvent
     {

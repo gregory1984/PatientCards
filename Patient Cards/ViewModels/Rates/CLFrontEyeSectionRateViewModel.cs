@@ -14,7 +14,7 @@ using Patient_Cards.ViewModels.Base;
 using Patient_Cards.ViewModels.Corrections;
 using Patient_Cards_Model.Interfaces;
 using Patient_Cards_Model.DTO.CL;
-using Patient_Cards.Events.PersonTest;
+using Patient_Cards.Events.PersonDataCollection;
 
 namespace Patient_Cards.ViewModels.Rates
 {
@@ -36,11 +36,6 @@ namespace Patient_Cards.ViewModels.Rates
         }
         #endregion
 
-        #region Event tokens
-        private SubscriptionToken clearFormEventToken;
-        private SubscriptionToken personDataRequestEventToken;
-        #endregion
-
         private readonly IRatesService ratesService;
 
         public CLFrontEyeSectionRateViewModel(IEventAggregator eventAggregator, IUnityContainer unityContainer, IRatesService ratesService, IDictionariesService dictionariesService)
@@ -54,13 +49,13 @@ namespace Patient_Cards.ViewModels.Rates
         {
             get => loaded ?? (loaded = new DelegateCommand(() =>
             {
-                clearFormEventToken = eventAggregator
-                    .GetEvent<ClearFormEvent>()
-                    .Subscribe(OnSubscribeClearFormEvent);
+                events.Add(
+                    eventAggregator.GetEvent<ClearFormEvent>(),
+                    eventAggregator.GetEvent<ClearFormEvent>().Subscribe(OnSubscribeClearFormEvent));
 
-                personDataRequestEventToken = eventAggregator
-                    .GetEvent<PersonDataRequestEvent>()
-                    .Subscribe(OnSubscribePersonDataRequestEvent);
+                events.Add(
+                    eventAggregator.GetEvent<PersonDataRequestEvent>(),
+                    eventAggregator.GetEvent<PersonDataRequestEvent>().Subscribe(OnSubscribePersonDataRequestEvent));
 
                 SetRates();
             }));
@@ -78,17 +73,9 @@ namespace Patient_Cards.ViewModels.Rates
         }
 
         private void OnSubscribePersonDataRequestEvent()
-            => eventAggregator.GetEvent<Events.Rates.CLFrontEyeSectionRate.PersonDataResponseEvent>().Publish(this);
+            => eventAggregator.GetEvent<PersonDataResponseEvent>().Publish(this);
 
         private void OnSubscribeClearFormEvent()
             => SetRates();
-
-        public override void UnsubscribePrismEvents()
-        {
-            base.UnsubscribePrismEvents();
-
-            eventAggregator.GetEvent<PersonDataRequestEvent>().Unsubscribe(personDataRequestEventToken);
-            eventAggregator.GetEvent<ClearFormEvent>().Unsubscribe(clearFormEventToken);
-        }
     }
 }

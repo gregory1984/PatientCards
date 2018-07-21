@@ -59,26 +59,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Events\Corrections\CL\CLCurrentCorrection\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Corrections\CL\CLMatchedCorrection\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Dictionaries\Complaints\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Corrections\GL\GLCurrentCorrection\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Corrections\GL\GLMatchedCorrection\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Dictionaries\Illnesses\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Dictionaries\Medicaments\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Dictionaries\Others\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Main\PersonalData\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\PersonTest\ClearFormEvent.cs" />
-    <Compile Include="Events\PersonTest\PersonDataRequestEvent.cs" />
-    <Compile Include="Events\Rates\CLFrontEyeSectionRate\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Rates\CLMatchedCorrectionRate\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Sharpness\CLSharpness\PersonDataResponseEvent.cs" />
-    <Compile Include="Events\Sharpness\GLSharpness\PersonDataResponseEvent.cs" />
+    <Compile Include="Events\PersonDataCollection\ClearFormEvent.cs" />
+    <Compile Include="Events\PersonDataCollection\PersonDataRequestEvent.cs" />
+    <Compile Include="Events\PersonDataCollection\PersonDataResponseEvent.cs" />
     <Compile Include="Helpers\OpticalAxisExtensions.cs" />
     <Compile Include="Helpers\OpticalNumberExtensions.cs" />
     <Compile Include="Helpers\OpticalSharpnessExtensions.cs" />
     <Compile Include="Helpers\TextBoxValidator.cs" />
-    <Compile Include="Helpers\PatientCardCompletionGuard.cs" />
+    <Compile Include="Helpers\PatientCardCollector.cs" />
     <Compile Include="ViewModels\Dictionaries\ComplaintsViewModel.cs" />
     <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionEyeViewModel.cs" />
     <Compile Include="ViewModels\Corrections\CL\CLCurrentCorrectionViewModel.cs" />

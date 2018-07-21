@@ -21,7 +21,7 @@ namespace Patient_Cards.Views.Main
             InitializeComponent();
 
             var viewmodel = DataContext as MainWindowViewModel;
-            viewmodel.ExceptionOccured += (ex) => MessageBoxes.CriticalQuestion(ex.ToString());
+            viewmodel.ExceptionOccuredEvent += (ex) => MessageBoxes.CriticalQuestion(ex.ToString());
 
             Unloaded += (sender, e) => viewmodel.UnsubscribePrismEvents();
         }

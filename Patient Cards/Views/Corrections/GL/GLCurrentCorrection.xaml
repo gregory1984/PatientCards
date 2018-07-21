@@ -140,8 +140,8 @@
                                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                                     BorderBrush="LightGray"
                                     FontSize="18"
-                                    TextChanged="OpticalAxis_TextChanged"
-                                    Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}" />
+                                    Text="{Binding Axis, UpdateSourceTrigger=PropertyChanged}"
+                                    TextChanged="OpticalAxis_TextChanged" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
