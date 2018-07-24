@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
 using Patient_Cards_Model.Entities;
 
+
 namespace Patient_Cards_Model.Mappings
 {
     public class ComplaintMap : ClassMap<Complaint>
@@ -15,7 +16,7 @@ namespace Patient_Cards_Model.Mappings
             Id(x => x.Id).Unique().Not.Nullable();
             Map(x => x.Name).Not.Nullable().Length(1000);
 
-            HasManyToMany(x => x.Cards).Inverse().Cascade.SaveUpdate();
+            HasManyToMany(x => x.ComplaintInterviews).Inverse().Cascade.SaveUpdate();
         }
     }
 }

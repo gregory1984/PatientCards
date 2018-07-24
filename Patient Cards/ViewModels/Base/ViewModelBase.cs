@@ -13,7 +13,7 @@ using Patient_Cards_Model.Interfaces;
 
 namespace Patient_Cards.ViewModels.Base
 {
-    public class ViewModelBase : BindableBase
+    public abstract class ViewModelBase : BindableBase
     {
         public delegate void ExceptionOccuredDelegate(Exception exception);
         public event ExceptionOccuredDelegate ExceptionOccuredEvent;

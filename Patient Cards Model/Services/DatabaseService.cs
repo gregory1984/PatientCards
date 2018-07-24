@@ -30,9 +30,9 @@ namespace Patient_Cards_Model.Services
                 using (var session = Hibernate.SessionFactory.OpenSession())
                 {
                     InsertInitialData(session);
-                    InsertIllnesses(session);
-                    InsertOthers(session);
-                    InsertMedicaments(session);
+                    InsertIllness(session);
+                    InsertOther(session);
+                    InsertMedicament(session);
                     InsertComplaints(session);
                     InsertGLFinallyMatchedCorrectionTypes(session);
                     InsertGLMatchedCorrectionTypes(session);
@@ -76,7 +76,7 @@ namespace Patient_Cards_Model.Services
             session.Flush();
         }
 
-        private void InsertIllnesses(ISession session)
+        private void InsertIllness(ISession session)
         {
             var illnesses = new List<Illness>
             {
@@ -95,7 +95,7 @@ namespace Patient_Cards_Model.Services
             session.Flush();
         }
 
-        private void InsertOthers(ISession session)
+        private void InsertOther(ISession session)
         {
             var others = new List<Other>
             {
@@ -111,7 +111,7 @@ namespace Patient_Cards_Model.Services
             session.Flush();
         }
 
-        private void InsertMedicaments(ISession session)
+        private void InsertMedicament(ISession session)
         {
             var medicaments = new List<Medicament>
             {

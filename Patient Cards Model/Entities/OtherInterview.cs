@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Patient_Cards_Model.Entities
 {
-    public class Patient
+    public class OtherInterview
     {
         public virtual int Id { get; set; }
-        public virtual string Name { get; set; }
-        public virtual string Surname { get; set; }
-        public virtual int? Age { get; set; }
+        public virtual string Optionals { get; set; }
+        public virtual IList<Other> Others { get; set; }
         public virtual IList<Card> Cards { get; set; }
     }
 }

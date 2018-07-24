@@ -39,11 +39,11 @@ namespace Patient_Cards.ViewModels.Dictionaries
             }
         }
 
-        private string illnessesOptional = "";
-        public string IllnessesOptional
+        private string optionals = "";
+        public string Optionals
         {
-            get { return illnessesOptional; }
-            set { SetProperty(ref illnessesOptional, value); }
+            get { return optionals; }
+            set { SetProperty(ref optionals, value); }
         }
         #endregion
 
@@ -87,7 +87,7 @@ namespace Patient_Cards.ViewModels.Dictionaries
 
         private void OnSubscribeClearFormEvent()
         {
-            IllnessesOptional = "";
+            Optionals = "";
             SelectedIllness = null;
 
             foreach (DictionaryViewModel i in Illnesses)

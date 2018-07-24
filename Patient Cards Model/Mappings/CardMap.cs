@@ -16,7 +16,6 @@ namespace Patient_Cards_Model.Mappings
             Map(x => x.CurrentVisitDate).Not.Nullable();
             Map(x => x.PreviousVisitDate).Nullable().Length(1000);
             Map(x => x.ControlVisitDate).Nullable();
-            Map(x => x.PatientAge).Not.Nullable();
             Map(x => x.VisitCause).Nullable().Length(1000);
             Map(x => x.ProfessionOrHobby).Nullable().Length(1000);
             Map(x => x.IsComputerProfession).Not.Nullable();
@@ -26,17 +25,19 @@ namespace Patient_Cards_Model.Mappings
             Map(x => x.Comments).Nullable().Length(1000);
             Map(x => x.CLProfessionConditionOptional).Nullable().Length(1000);
             Map(x => x.Treatments).Nullable().Length(1000);
-            Map(x => x.OthersOptional).Nullable().Length(1000);
-            Map(x => x.MedicamentsOptional).Nullable().Length(1000);
-            Map(x => x.ComplaintsOptional).Nullable().Length(1000);
-            Map(x => x.IllnessesOptional).Nullable().Length(1000);
             Map(x => x.GLCurrentCorrectionFromWhen).Nullable().Length(1000);
             Map(x => x.CLCurrentCorrectionFromWhen).Nullable().Length(1000);
             Map(x => x.GLFinallyMatchedCorrectionTypeOptional).Nullable().Length(1000);
             Map(x => x.CurrentGLType).Nullable().Length(1000);
 
-            References(x => x.Distance);
             References(x => x.Patient);
+            References(x => x.Distance);
+
+            References(x => x.ComplaintInterview);
+            References(x => x.IllnessInterview);
+            References(x => x.OtherInterview);
+            References(x => x.MedicamentInterview);
+
             References(x => x.CLWearingTypeCurrent);
             References(x => x.CLWearingTypeMatchedTest);
             References(x => x.CLWearingTypeMatchedTrade);
@@ -52,10 +53,6 @@ namespace Patient_Cards_Model.Mappings
             HasMany(x => x.CLPrimaryDatas).Inverse().Cascade.All();
 
             HasManyToMany(x => x.CLProfessionConditions).Cascade.All();
-            HasManyToMany(x => x.Others).Cascade.All();
-            HasManyToMany(x => x.Medicaments).Cascade.All();
-            HasManyToMany(x => x.Complaints).Cascade.All();
-            HasManyToMany(x => x.Illnesses).Cascade.All();
         }
     }
 }

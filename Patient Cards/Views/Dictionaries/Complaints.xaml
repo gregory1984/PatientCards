@@ -44,7 +44,7 @@
                     Controls:TextBoxHelper.SelectAllOnFocus="True"
                     FontFamily="Segoe UI"
                     MaxLength="1000"
-                    Text="{Binding ComplaintsOptional, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding Optionals, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <ListBox
                 Name="ComplaintsListBox"

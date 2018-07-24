@@ -15,7 +15,6 @@ namespace Patient_Cards_Model.Entities
         public virtual DateTime? PreviousVisitDate { get; set; }
         public virtual string ControlVisitDate { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual int PatientAge { get; set; }
         public virtual string VisitCause { get; set; }
         public virtual string ProfessionOrHobby { get; set; }
         public virtual Distance Distance { get; set; }
@@ -27,14 +26,12 @@ namespace Patient_Cards_Model.Entities
         public virtual IList<CLProfessionCondition> CLProfessionConditions { get; set; }
         public virtual string CLProfessionConditionOptional { get; set; }
         public virtual string Treatments { get; set; }
-        public virtual IList<Other> Others { get; set; }
-        public virtual string OthersOptional { get; set; }
-        public virtual IList<Medicament> Medicaments { get; set; }
-        public virtual string MedicamentsOptional { get; set; }
-        public virtual IList<Complaint> Complaints { get; set; }
-        public virtual string ComplaintsOptional { get; set; }
-        public virtual IList<Illness> Illnesses { get; set; }
-        public virtual string IllnessesOptional { get; set; }
+
+        public virtual OtherInterview OtherInterview { get; set; }
+        public virtual MedicamentInterview MedicamentInterview { get; set; }
+        public virtual IllnessInterview IllnessInterview { get; set; }
+        public virtual ComplaintInterview ComplaintInterview { get; set; }
+
         public virtual string CurrentGLType { get; set; }
         public virtual IList<GLCurrentCorrection> GLCurrentCorrections { get; set; }
         public virtual string GLCurrentCorrectionFromWhen { get; set; }

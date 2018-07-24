@@ -8,14 +8,15 @@ using Patient_Cards_Model.Entities;
 
 namespace Patient_Cards_Model.Mappings
 {
-    public class OtherMap : ClassMap<Other>
+    public class MedicamentInterviewMap : ClassMap<MedicamentInterview>
     {
-        public OtherMap()
+        public MedicamentInterviewMap()
         {
             Id(x => x.Id).Unique().Not.Nullable();
-            Map(x => x.Name).Not.Nullable().Length(1000);
+            Map(x => x.Optionals).Nullable().Length(1000);
 
-            HasManyToMany(x => x.OtherInterviews).Inverse().Cascade.SaveUpdate();
+            HasManyToMany(x => x.Medicaments).Cascade.SaveUpdate();
+            HasMany(x => x.Cards).Inverse().Cascade.SaveUpdate();
         }
     }
 }
