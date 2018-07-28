@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Patient_Cards_Model.Entities.GL
 {
-    public class GLFinallyMatchedCorrectionType
+    public class GLSharpnessInterview
     {
         public virtual int Id { get; set; }
-        public virtual string Name { get; set; }
-        public virtual IList<GLMatchedCorrectionInterview> GLMatchedCorrectionInterviews { get; set; }
+        public virtual IList<GLSharpness> GLSharpnesses { get; set; }
+        public virtual IList<Card> Cards { get; set; }
     }
 }

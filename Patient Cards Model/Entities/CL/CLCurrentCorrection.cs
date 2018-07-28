@@ -16,6 +16,6 @@ namespace Patient_Cards_Model.Entities.CL
         public virtual decimal BC { get; set; }
         public virtual decimal Visus { get; set; }
         public virtual Eye Eye { get; set; }
-        public virtual Card Card { get; set; }
+        public virtual CLCurrentCorrectionInterview CLCurrentCorrectionInterview { get; set; }
     }
 }

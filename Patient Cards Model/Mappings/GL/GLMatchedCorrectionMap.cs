@@ -22,7 +22,7 @@ namespace Patient_Cards_Model.Mappings.GL
             References(x => x.GLMatchedCorrectionType);
             References(x => x.Base);
             References(x => x.Eye);
-            References(x => x.Card);
+            References(x => x.GLMatchedCorrectionInterview);
         }
     }
 }

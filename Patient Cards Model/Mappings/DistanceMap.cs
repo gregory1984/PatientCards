@@ -15,7 +15,7 @@ namespace Patient_Cards_Model.Mappings
             Id(x => x.Id).Unique().Not.Nullable();
             Map(x => x.Name).Not.Nullable().Length(1000);
 
-            HasMany(x => x.Cards).Inverse().Cascade.SaveUpdate();
+            HasMany(x => x.PersonalInterviews).Inverse().Cascade.SaveUpdate();
         }
     }
 }

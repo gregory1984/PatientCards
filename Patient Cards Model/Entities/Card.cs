@@ -11,43 +11,21 @@ namespace Patient_Cards_Model.Entities
     public class Card
     {
         public virtual int Id { get; set; }
-        public virtual DateTime CurrentVisitDate { get; set; }
-        public virtual DateTime? PreviousVisitDate { get; set; }
-        public virtual string ControlVisitDate { get; set; }
-        public virtual Patient Patient { get; set; }
-        public virtual string VisitCause { get; set; }
-        public virtual string ProfessionOrHobby { get; set; }
-        public virtual Distance Distance { get; set; }
-        public virtual bool IsComputerProfession { get; set; }
-        public virtual string ComputerProfessionOptional { get; set; }
-        public virtual bool IsCarDriving { get; set; }
-        public virtual string CarDrivingOptional { get; set; }
         public virtual string Comments { get; set; }
-        public virtual IList<CLProfessionCondition> CLProfessionConditions { get; set; }
-        public virtual string CLProfessionConditionOptional { get; set; }
-        public virtual string Treatments { get; set; }
 
+        public virtual PersonalInterview PersonalInterview { get; set; }
         public virtual OtherInterview OtherInterview { get; set; }
         public virtual MedicamentInterview MedicamentInterview { get; set; }
         public virtual IllnessInterview IllnessInterview { get; set; }
         public virtual ComplaintInterview ComplaintInterview { get; set; }
 
-        public virtual string CurrentGLType { get; set; }
-        public virtual IList<GLCurrentCorrection> GLCurrentCorrections { get; set; }
-        public virtual string GLCurrentCorrectionFromWhen { get; set; }
-        public virtual IList<CLCurrentCorrection> CLCurrentCorrections { get; set; }
-        public virtual string CLCurrentCorrectionFromWhen { get; set; }
-        public virtual CLWearingType CLWearingTypeCurrent { get; set; }
-        public virtual IList<GLSharpness> GLSharpnesses { get; set; }
-        public virtual IList<CLSharpness> CLSharpnesses { get; set; }
-        public virtual IList<CLFrontEyeSectionRate> CLFrontEyeSectionRates { get; set; }
-        public virtual GLFinallyMatchedCorrectionType GLFinallyMatchedCorrectionType { get; set; }
-        public virtual string GLFinallyMatchedCorrectionTypeOptional { get; set; }
-        public virtual IList<GLMatchedCorrection> GLMatchedCorrections { get; set; }
-        public virtual CLWearingType CLWearingTypeMatchedTest { get; set; }
-        public virtual CLWearingType CLWearingTypeMatchedTrade { get; set; }
-        public virtual IList<CLPrimaryData> CLPrimaryDatas { get; set; }
-        public virtual IList<CLMatchedCorrection> CLMatchedCorrections { get; set; }
-        public virtual IList<CLMatchedCorrectionRate> CLMatchedCorrectionRates { get; set; }
+        public virtual GLCurrentCorrectionInterview GLCurrentCorrectionInterview { get; set; }
+        public virtual CLCurrentCorrectionInterview CLCurrentCorrectionInterview { get; set; }
+        public virtual GLSharpnessInterview GLSharpnessInterview { get; set; }
+        public virtual GLMatchedCorrectionInterview GLMatchedCorrectionInterview { get; set; }
+        public virtual CLFrontEyeSectionRateInterview CLFrontEyeSectionRateInterview { get; set; }
+        public virtual CLSharpnessInterview CLSharpnessInterview { get; set; }
+        public virtual CLMatchedCorrectionRateInterview CLMatchedCorrectionRateInterview { get; set; }
+        public virtual CLMatchedCorrectionInterview CLMatchedCorrectionInterview { get; set; }
     }
 }

@@ -8,14 +8,14 @@ using Patient_Cards_Model.Entities.GL;
 
 namespace Patient_Cards_Model.Mappings.GL
 {
-    public class GLFinallyMatchedCorrectionTypeMap : ClassMap<GLFinallyMatchedCorrectionType>
+    public class GLSharpnessInterviewMap : ClassMap<GLSharpnessInterview>
     {
-        public GLFinallyMatchedCorrectionTypeMap()
+        public GLSharpnessInterviewMap()
         {
             Id(x => x.Id).Unique().Not.Nullable();
-            Map(x => x.Name).Not.Nullable().Length(1000);
 
-            HasMany(x => x.GLMatchedCorrectionInterviews).Inverse().Cascade.SaveUpdate();
+            HasMany(x => x.GLSharpnesses).Inverse().Cascade.All();
+            HasMany(x => x.Cards).Inverse().Cascade.All();
         }
     }
 }

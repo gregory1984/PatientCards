@@ -17,8 +17,8 @@ namespace Patient_Cards_Model.Mappings.CL
             Map(x => x.Vendor).Nullable().Length(1000);
             Map(x => x.Liquid).Nullable().Length(1000);
 
-            References(x => x.Card);
-            References(x => x.CLMatchedCorrectionType);
+            References(x => x.CLMatchedCorrectionInterviewTest);
+            References(x => x.CLMatchedCorrectionInterviewTrade);
         }
     }
 }

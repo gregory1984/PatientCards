@@ -25,6 +25,8 @@ namespace Patient_Cards_Model.Services
     {
         public IList<CLFrontEyeSectionRateDTO> GetCLFrontEyeSectionRates(int? cardId = null)
         {
+            return new List<CLFrontEyeSectionRateDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Card c = null;
@@ -50,10 +52,13 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<CLFrontEyeSectionRateDTO>();
             }
+            */
         }
 
         public IList<CLMatchedCorrectionRateDTO> GetCLMatchedCorrectionRates(int? cardId = null)
         {
+            return new List<CLMatchedCorrectionRateDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Card c = null;
@@ -79,6 +84,7 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<CLMatchedCorrectionRateDTO>();
             }
+            */
         }
     }
 }

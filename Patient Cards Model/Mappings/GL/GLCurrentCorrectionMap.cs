@@ -21,7 +21,7 @@ namespace Patient_Cards_Model.Mappings.GL
 
             References(x => x.Base).Nullable();
             References(x => x.Eye);
-            References(x => x.Card);
+            References(x => x.GLCurrentCorrectionInterview);
         }
     }
 }

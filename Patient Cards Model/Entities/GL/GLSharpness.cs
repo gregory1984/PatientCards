@@ -12,7 +12,7 @@ namespace Patient_Cards_Model.Entities.GL
         public virtual decimal CurrentCorrection { get; set; }
         public virtual decimal SC { get; set; }
         public virtual decimal CC { get; set; }
-        public virtual Card Card { get; set; }
         public virtual Eye Eye { get; set; }
+        public virtual GLSharpnessInterview GLSharpnessInterview { get; set; }
     }
 }

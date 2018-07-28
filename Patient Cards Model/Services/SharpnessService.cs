@@ -26,6 +26,8 @@ namespace Patient_Cards_Model.Services
     {
         public IList<GLSharpnessDTO> GetGLSharpnesses(int? cardId = null)
         {
+            return new List<GLSharpnessDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;
@@ -52,10 +54,13 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<GLSharpnessDTO>();
             }
+            */
         }
 
         public IList<CLSharpnessDTO> GetCLSharpnesses(int? cardId = null)
         {
+            return new List<CLSharpnessDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;
@@ -81,6 +86,7 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<CLSharpnessDTO>();
             }
+            */
         }
     }
 }

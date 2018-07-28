@@ -17,8 +17,8 @@ namespace Patient_Cards_Model.Mappings.GL
             Map(x => x.SC).Nullable();
             Map(x => x.CC).Nullable();
 
-            References(x => x.Card);
             References(x => x.Eye);
+            References(x => x.GLSharpnessInterview);
         }
     }
 }

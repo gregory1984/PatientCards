@@ -22,7 +22,7 @@ namespace Patient_Cards_Model.Mappings.CL
 
             References(x => x.CLMatchedCorrectionType);
             References(x => x.Eye);
-            References(x => x.Card);
+            References(x => x.CLMatchedCorrectionInterview);
         }
     }
 }

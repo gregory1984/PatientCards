@@ -15,9 +15,8 @@ namespace Patient_Cards_Model.Mappings.CL
             Id(x => x.Id).Unique().Not.Nullable();
             Map(x => x.Name).Not.Nullable().Length(1000);
 
-            HasMany(x => x.CardsCurrent).Inverse().Cascade.SaveUpdate();
-            HasMany(x => x.CardsTest).Inverse().Cascade.SaveUpdate();
-            HasMany(x => x.CardsTrade).Inverse().Cascade.SaveUpdate();
+            HasMany(x => x.CLMatchedCorrectionInterviewTest).Inverse().Cascade.SaveUpdate();
+            HasMany(x => x.CLMatchedCorrectionInterviewTrade).Inverse().Cascade.SaveUpdate();
         }
     }
 }

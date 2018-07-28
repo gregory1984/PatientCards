@@ -8,16 +8,14 @@ using Patient_Cards_Model.Entities.CL;
 
 namespace Patient_Cards_Model.Mappings.CL
 {
-    public class CLSharpnessMap : ClassMap<CLSharpness>
+    public class CLSharpnessInterviewMap : ClassMap<CLSharpnessInterview>
     {
-        public CLSharpnessMap()
+        public CLSharpnessInterviewMap()
         {
             Id(x => x.Id).Unique().Not.Nullable();
-            Map(x => x.CurrentCorrection).Nullable();
-            Map(x => x.CC).Nullable();
 
-            References(x => x.CLSharpnessInterview);
-            References(x => x.Eye);
+            HasMany(x => x.CLSharpnesses).Inverse().Cascade.All();
+            HasMany(x => x.Cards).Inverse().Cascade.All();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Patient_Cards_Model.Mappings
             Map(x => x.Surname).Not.Nullable().Length(1000);
             Map(x => x.Age).Nullable();
 
-            HasMany(x => x.Cards).Inverse().Cascade.All();
+            HasMany(x => x.PersonalInterviews).Inverse().Cascade.All();
         }
     }
 }

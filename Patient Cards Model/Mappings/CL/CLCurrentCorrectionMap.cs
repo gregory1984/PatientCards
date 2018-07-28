@@ -21,7 +21,7 @@ namespace Patient_Cards_Model.Mappings.CL
             Map(x => x.Visus).Nullable();
 
             References(x => x.Eye);
-            References(x => x.Card);
+            References(x => x.CLCurrentCorrectionInterview);
         }
     }
 }

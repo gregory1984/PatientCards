@@ -17,6 +17,6 @@ namespace Patient_Cards_Model.Entities.GL
         public virtual Base Base { get; set; }
         public virtual Eye Eye { get; set; }
         public virtual GLMatchedCorrectionType GLMatchedCorrectionType { get; set; }
-        public virtual Card Card { get; set; }
+        public virtual GLMatchedCorrectionInterview GLMatchedCorrectionInterview { get; set; }
     }
 }

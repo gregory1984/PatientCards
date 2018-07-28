@@ -16,7 +16,7 @@ namespace Patient_Cards_Model.Mappings.CL
             Map(x => x.ControlVisitRate).Nullable().Length(1000);
             Map(x => x.CurrentVisitRate).Nullable().Length(1000);
 
-            References(x => x.Card);
+            References(x => x.CLFrontEyeSectionRateInterview);
             References(x => x.CLFrontEyeSectionRateIssue);
         }
     }

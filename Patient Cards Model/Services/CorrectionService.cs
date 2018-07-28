@@ -26,6 +26,8 @@ namespace Patient_Cards_Model.Services
     {
         public IList<GLMatchedCorrectionDTO> GetGLMatchedCorrections(GLCorrectionType gLCorrectionType, int? cardId = null)
         {
+            return new List<GLMatchedCorrectionDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;
@@ -60,10 +62,13 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<GLMatchedCorrectionDTO>();
             }
+            */
         }
 
         public IList<CLMatchedCorrectionDTO> GetCLMatchedCorrections(CLCorrectionType cLCorrectionType, int? cardId = null)
         {
+            return new List<CLMatchedCorrectionDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;
@@ -95,18 +100,24 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<CLMatchedCorrectionDTO>();
             }
+            */
         }
 
         public IList<CLPrimaryDataDTO> GetCLPrimaryDatas(int cardId)
         {
+            throw new NotImplementedException();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
-                throw new NotImplementedException();
+                
             }
+            */
         }
 
         public IList<GLCurrentCorrectionDTO> GetGLCurrentCorrections(int? cardId = null)
         {
+            return new List<GLCurrentCorrectionDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;
@@ -140,10 +151,13 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<GLCurrentCorrectionDTO>();
             }
+            */
         }
 
         public IList<CLCurrentCorrectionDTO> GetCLCurrentCorrections(int? cardId = null)
         {
+            return new List<CLCurrentCorrectionDTO>();
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Eye e = null;
@@ -174,10 +188,13 @@ namespace Patient_Cards_Model.Services
 
                 return query.List<CLCurrentCorrectionDTO>();
             }
+            */
         }
 
         public string GetCurrentCorrectionFromWhen(VisionType visionType, int cardId)
         {
+            return "";
+            /*
             using (var session = Hibernate.SessionFactory.OpenSession())
             {
                 Card c = null;
@@ -189,6 +206,7 @@ namespace Patient_Cards_Model.Services
                             Res.Eq(Pro.Constant((int)visionType), Pro.Constant(1)), Pro.Property("GLCurrentCorrectionFromWhen"), Pro.Property("CLCurrentCorrectionFromWhen"))))
                     .SingleOrDefault<string>();
             }
+            */
         }
     }
 }

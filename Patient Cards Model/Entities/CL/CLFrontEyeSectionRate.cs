@@ -11,7 +11,7 @@ namespace Patient_Cards_Model.Entities.CL
         public virtual int Id { get; set; }
         public virtual string CurrentVisitRate { get; set; }
         public virtual string ControlVisitRate { get; set; }
-        public virtual Card Card { get; set; }
+        public virtual CLFrontEyeSectionRateInterview CLFrontEyeSectionRateInterview { get; set; }
         public virtual CLFrontEyeSectionRateIssue CLFrontEyeSectionRateIssue { get; set; }
     }
 }

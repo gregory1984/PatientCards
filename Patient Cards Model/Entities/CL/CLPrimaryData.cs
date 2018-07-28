@@ -12,7 +12,7 @@ namespace Patient_Cards_Model.Entities.CL
         public virtual string Name { get; set; }
         public virtual string Vendor { get; set; }
         public virtual string Liquid { get; set; }
-        public virtual Card Card { get; set; }
-        public virtual CLMatchedCorrectionType CLMatchedCorrectionType { get; set; }
+        public virtual CLMatchedCorrectionInterview CLMatchedCorrectionInterviewTest { get; set; }
+        public virtual CLMatchedCorrectionInterview CLMatchedCorrectionInterviewTrade { get; set; }
     }
 }
